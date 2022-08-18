@@ -43,3 +43,26 @@ function dragEnter(e){
 function dragLeave(){
     this.style.border = "none";
 }
+
+function check(){
+    let choice = document.getElementsByClassName('choice');
+    var reactant1 = choice[0].children;
+    var reactant2 = choice[1].children;
+    console.log(choice);
+    try {
+        if (reactant1[0].className == "sodium" && reactant1[1].className == "chlorine" || reactant1[0].className == "chlorine" && reactant1[1].className == "sodium"){
+            if (reactant2[0].className == "oxygen" && reactant2[1].className == "hydrogen" && reactant2[2].className == "hydrogen" || reactant2[0].className == "hydrogen" && reactant2[1].className == "oxygen" && reactant2[2].className == "hydrogen" || reactant2[0].className == "hydrogen" && reactant2[1].className == "hydrogen" &&reactant2[2].className == "oxygen"){
+                alert("Correct");
+            }
+            else{
+                alert("Incorrect. Please try again.");
+            }
+        }
+        else{
+            alert("Incorrect please try again.");
+        }
+    } catch (error) {
+        alert("Incorrect please try again.");
+    }
+
+}

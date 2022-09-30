@@ -33,28 +33,32 @@
     <div class="container">
       <h4 class="text-center pt-5">Reactants</h4>
       <div class="reactants flex">
-        <div class="sodiumHydroxide flex">
+        <div class="calciumCarbonate flex" style="align-items: baseline;">
           <p draggable="true" class="sodium">
             <img src="/assets/Na - final.png" />
           </p>
           <p draggable="true" class="oxygen">
             <img src="/assets/O - final.png" />
           </p>
-          <p draggable="true" class="hydrogen">
-            <img src="/assets/H - final.png" />
-          </p>
-        </div>
-        <div class="hydroChloricAcid flex">
-          <p draggable="true" class="hydrogen">
-            <img src="/assets/H - final.png" />
-          </p>
-          <p draggable="true" class="chlorine">
-            <img src="/assets/Cl - final.png" />
+          <div style="text-align: center;">
+            <p draggable="true" class="oxygen">
+              <img src="/assets/Cl - final.png" />
+            </p>
+            <p draggable="true" class="oxygen">
+              <img src="/assets/O - final.png" />
+            </p>
+          </div>
+          <p draggable="true" class="oxygen">
+            <img src="/assets/O - final.png" />
           </p>
         </div>
       </div>
       <div class="flex">
-        <button type="button" class="btn btn-success" onclick="checkNuetralization()">
+        <button
+          type="button"
+          class="btn btn-success"
+          onclick="checkNuetralization()"
+        >
           Submit
         </button>
       </div>

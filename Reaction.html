@@ -32,38 +32,57 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   </head>
   <body>
-    <h1 class="heading">Neutralisation Reaction</h1>
-    <div class="container">
-      <h4 class="text-center pt-5">Reactants</h4>
-      <div class="reactants flex">
-        <div class="sodiumHydroxide flex">
-          <p draggable="true" class="sodium">
-            <img src="/assets/Na - final.png" />
-          </p>
-          <p draggable="true" class="oxygen">
-            <img src="/assets/O - final.png" />
-          </p>
-          <p draggable="true" class="hydrogen">
-            <img src="/assets/H - final.png" />
-          </p>
+    <nav class="navbar bg-dark">
+      <div class="container-fluid">
+        <span class="navbar-brand mx-3 text-light"><h1>Reaction-Game</h1></span>
+      </div>
+    </nav>
+    <h1 class="heading m-3">Neutralisation Reaction</h1>
+    <div class="container mw-100">
+      <div class="reaction flex">
+        <div class="reactants">
+          <div class="sodiumHydroxide flex">
+            <p draggable="true" class="sodium">
+              <img src="/assets/Na - final.png" />
+            </p>
+            <p draggable="true" class="oxygen">
+              <img src="/assets/O - final.png" />
+            </p>
+            <p draggable="true" class="hydrogen">
+              <img src="/assets/H - final.png" />
+            </p>
+          </div>
+          <div class="hydroChloricAcid flex">
+            <p draggable="true" class="hydrogen">
+              <img src="/assets/H - final.png" />
+            </p>
+            <p draggable="true" class="chlorine">
+              <img src="/assets/Cl - final.png" />
+            </p>
+          </div>
         </div>
-        <div class="hydroChloricAcid flex">
-          <p draggable="true" class="hydrogen">
-            <img src="/assets/H - final.png" />
-          </p>
-          <p draggable="true" class="chlorine">
-            <img src="/assets/Cl - final.png" />
-          </p>
+
+        <div class="product flex">
+          <div class="choice flex"></div>
+          <div class="choice flex"></div>
         </div>
       </div>
-      <div class="flex">
-        <button type="button" class="btn btn-success" onclick="checkNuetralization()">
+      <div class="tags flex">
+        <div class="reactantTag">
+          <h4 class="text-center pt-5">Reactants</h4>
+        </div>
+        <div class="productTag">
+          <h4 class="text-center pt-5">Products</h4>
+        </div>
+      </div>
+      <div class="flex submit">
+        <button
+          type="button"
+          class="btn btn-success m-5"
+          onclick="checkNuetralization()"
+        >
           Submit
         </button>
-      </div>
-      <div class="product flex">
-        <div class="choice flex"></div>
-        <div class="choice flex"></div>
       </div>
     </div>
 

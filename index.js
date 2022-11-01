@@ -63,9 +63,8 @@ function checkNuetralization() {
           reactant2[2].className == "hydrogen"
         ) {
           toastr.success("Great Job!");
-          () => {
-            $("#myModal").modal("show");
-          };
+          $("#myModal").modal("show");
+          
         }
       } else {
         toastr.error("Oops! Please read the hint and try again.");

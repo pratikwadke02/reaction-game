@@ -54,23 +54,40 @@ function checkNuetralization() {
       (reactant1[0].className == "chlorine" &&
         reactant1[1].className == "sodium")
     ) {
-      if (
-        reactant2[1].className == "oxygen" &&
-        reactant2[0].className == "hydrogen" &&
-        reactant2[2].className == "hydrogen"
-      ) {
-        toastr.success('Great Job!');
+      // console.log(true);
+      if (reactant2.length == 3) {
+        if (
+          reactant2[1].className == "oxygen" &&
+          reactant2[0].className == "hydrogen" &&
+          reactant2[2].className == "hydrogen"
+        ) {
+          toastr.success("Great Job!");
+        }
       } else {
         toastr.error("Oops! Please read the hint and try again.");
-        toastr.info("Hint: The products are gases.","",{timeOut: 0, extendedTimeOut: 0});
+        toastr.info(
+          "Hint: The Second Product covers over 71% of the earth.",
+          "",
+          {
+            timeOut: 0,
+            extendedTimeOut: 0,
+          }
+        );
       }
     } else {
       toastr.error("Incorrect please try again.");
-      toastr.info("Hint: The products are gases.","",{timeOut: 0, extendedTimeOut: 0});
+      toastr.info("Hint: A Sodium Salt is formed in the given Reaction.", "", {
+        timeOut: 0,
+        extendedTimeOut: 0,
+      });
     }
   } catch (error) {
+    console.log(error);
     toastr.error("Incorrect please try again.");
-    toastr.info("Hint: The products are gases.","",{timeOut: 0, extendedTimeOut: 0});
+    toastr.info("Hint: A Sodium Salt is formed in the given Reaction.", "", {
+      timeOut: 0,
+      extendedTimeOut: 0,
+    });
   }
 }
 
@@ -129,18 +146,18 @@ function checkDecomposition() {
 }
 
 toastr.options = {
-  "closeButton": true,
-  "newestOnTop": false,
-  "progressBar": true,
-  "positionClass": "toast-top-right",
-  "preventDuplicates": false,
-  "onclick": null,
-  "showDuration": "300",
-  "hideDuration": "1000",
-  "timeOut": "5000",
-  "extendedTimeOut": "1000",
-  "showEasing": "swing",
-  "hideEasing": "linear",
-  "showMethod": "fadeIn",
-  "hideMethod": "fadeOut"
-}
+  closeButton: true,
+  newestOnTop: false,
+  progressBar: true,
+  positionClass: "toast-top-right",
+  preventDuplicates: false,
+  onclick: null,
+  showDuration: "300",
+  hideDuration: "1000",
+  timeOut: "5000",
+  extendedTimeOut: "1000",
+  showEasing: "swing",
+  hideEasing: "linear",
+  showMethod: "fadeIn",
+  hideMethod: "fadeOut",
+};

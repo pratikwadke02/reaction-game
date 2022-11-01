@@ -55,6 +55,7 @@ function checkNuetralization() {
         reactant1[1].className == "sodium")
     ) {
       // console.log(true);
+
       if (reactant2.length == 3) {
         if (
           reactant2[1].className == "oxygen" &&
@@ -62,6 +63,9 @@ function checkNuetralization() {
           reactant2[2].className == "hydrogen"
         ) {
           toastr.success("Great Job!");
+          () => {
+            $("#myModal").modal("show");
+          };
         }
       } else {
         toastr.error("Oops! Please read the hint and try again.");

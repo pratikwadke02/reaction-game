@@ -59,15 +59,18 @@ function checkNuetralization() {
         reactant2[0].className == "hydrogen" &&
         reactant2[2].className == "hydrogen"
       ) {
-        toastr.success('Correct Answer');
+        toastr.success('Great Job!');
       } else {
-        toastr.error("Incorrect. Please try again.");
+        toastr.error("Oops! Please read the hint and try again.");
+        toastr.info("Hint: The products are gases.","",{timeOut: 0, extendedTimeOut: 0});
       }
     } else {
       toastr.error("Incorrect please try again.");
+      toastr.info("Hint: The products are gases.","",{timeOut: 0, extendedTimeOut: 0});
     }
   } catch (error) {
     toastr.error("Incorrect please try again.");
+    toastr.info("Hint: The products are gases.","",{timeOut: 0, extendedTimeOut: 0});
   }
 }
 
@@ -129,7 +132,7 @@ toastr.options = {
   "closeButton": true,
   "newestOnTop": false,
   "progressBar": true,
-  "positionClass": "toast-bottom-center",
+  "positionClass": "toast-top-right",
   "preventDuplicates": false,
   "onclick": null,
   "showDuration": "300",

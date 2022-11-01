@@ -3,8 +3,6 @@ var choice = document.getElementsByClassName("choice");
 
 var dragItem = null;
 
-console.log("hello");
-
 for (var i of p) {
   i.addEventListener("dragstart", dragStart);
   i.addEventListener("dragend", dragEnd);
@@ -61,15 +59,15 @@ function checkNuetralization() {
         reactant2[0].className == "hydrogen" &&
         reactant2[2].className == "hydrogen"
       ) {
-        alert("Correct");
+        toastr.success('Correct Answer');
       } else {
-        alert("Incorrect. Please try again.");
+        toastr.error("Incorrect. Please try again.");
       }
     } else {
-      alert("Incorrect please try again.");
+      toastr.error("Incorrect please try again.");
     }
   } catch (error) {
-    alert("Incorrect please try again.");
+    toastr.error("Incorrect please try again.");
   }
 }
 
@@ -125,4 +123,21 @@ function checkDecomposition() {
   } catch (error) {
     alert("Incorrect please try again.");
   }
+}
+
+toastr.options = {
+  "closeButton": true,
+  "newestOnTop": false,
+  "progressBar": true,
+  "positionClass": "toast-bottom-center",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
 }

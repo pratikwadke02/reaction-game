@@ -62,7 +62,7 @@ function checkNuetralization() {
           reactant2[0].className == "hydrogen" &&
           reactant2[2].className == "hydrogen"
         ) {
-          toastr.success("Great Job!");
+          toastr.remove();
           $("#myModal").modal("show");
           
         }
@@ -79,7 +79,7 @@ function checkNuetralization() {
       }
     } else {
       toastr.error("Incorrect please try again.");
-      toastr.info("Hint: A Sodium Salt is formed in the given Reaction.", "", {
+      toastr.info("Hint: The first Product is used heavily in cooking.", "", {
         timeOut: 0,
         extendedTimeOut: 0,
       });
@@ -87,7 +87,7 @@ function checkNuetralization() {
   } catch (error) {
     console.log(error);
     toastr.error("Incorrect please try again.");
-    toastr.info("Hint: A Sodium Salt is formed in the given Reaction.", "", {
+    toastr.info("Hint: The first Product is used heavily in cooking.", "", {
       timeOut: 0,
       extendedTimeOut: 0,
     });
@@ -164,3 +164,11 @@ toastr.options = {
   showMethod: "fadeIn",
   hideMethod: "fadeOut",
 };
+
+function reset() {
+  location.reload();
+}
+
+function changePage() {
+  location.href = "Home.html";
+}

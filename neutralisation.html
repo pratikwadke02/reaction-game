@@ -77,6 +77,15 @@
         <button
           type="button"
           class="btn btn-success m-5"
+          onclick="reset()"
+        >
+          Reset
+        </button>
+      </div>
+      <div class="flex submit">
+        <button
+          type="button"
+          class="btn btn-success m-5"
           onclick="checkNuetralization()"
         >
           Submit
@@ -84,20 +93,22 @@
       </div>
     </div>
     <div id="myModal" class="modal fade" role="dialog">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">
+
+            <h4 class="modal-title">Congratulations!!! User you have successfully completed neutralisation reaction.</h4>
+            <button type="button" class="close" data-dismiss="modal" onclick="changePage()">
               &times;
             </button>
-            <h4 class="modal-title">Modal Header</h4>
           </div>
           <div class="modal-body">
-            <p>Some text in the modal.</p>
+            <p>NaOh + HCL --> NaCL + H2O</p>
+            <p>Na and CL are explosive and poisonous in nature but when they react together they form common salt which essential for cooking.</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">
+            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="changePage()">
               Close
             </button>
           </div>

@@ -37,6 +37,12 @@
     </nav>
     <h1 class="heading m-3">Neutralisation Reaction</h1>
     <div class="container mw-100">
+      <img style="position:absolute;padding-left:50%;display:block;" id="hint" src='characterimages/4.png'/>
+      <div class="box">
+      <img style="padding-left:60%;display:block;
+      top: 10%;" id="dialog" src='characterimages/dialog.png'/>
+      <div class="centered" style="color: black; font-size: x-large;">Hint</div>
+      </div>
       <div class="reaction flex">
         <div class="reactants">
           <div class="sodiumHydroxide flex">
@@ -91,6 +97,16 @@
           Submit
         </button>
       </div>
+      <div class="flex submit">
+        <button
+          type="button"
+          class="btn btn-success m-5"
+          onclick="hint()"
+        >
+          Hint
+        </button>
+      </div>
+      
     </div>
     <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog modal-dialog-centered modal-lg">

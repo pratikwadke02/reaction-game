@@ -104,3 +104,16 @@ body {
   left:50%;
   margin:0 0 0 -150px;
 }
+
+.box {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+}

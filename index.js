@@ -76,6 +76,7 @@ function checkNuetralization() {
             extendedTimeOut: 0,
           }
         );
+        hint();
       }
     } else {
       toastr.error("Incorrect please try again.");
@@ -83,6 +84,7 @@ function checkNuetralization() {
         timeOut: 0,
         extendedTimeOut: 0,
       });
+      hint();
     }
   } catch (error) {
     console.log(error);
@@ -91,6 +93,7 @@ function checkNuetralization() {
       timeOut: 0,
       extendedTimeOut: 0,
     });
+    hint();
   }
 }
 
@@ -171,4 +174,15 @@ function reset() {
 
 function changePage() {
   location.href = "Home.html";
+}
+
+function hint() {
+  var hint = document.getElementById("hint");
+  var dialog = document.getElementById("dialog");
+  hint.style.display = "block";
+  dialog.style.display = "block";
+  setTimeout(() => {
+    hint.style.display = "none";
+    dialog.style.display = "none";
+  }, 3000);
 }

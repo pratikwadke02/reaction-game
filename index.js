@@ -42,6 +42,8 @@ function dragLeave() {
   this.style.border = "none";
 }
 
+
+
 function checkNuetralization() {
   let choice = document.getElementsByClassName("choice");
   var reactant1 = choice[0].children;
@@ -67,7 +69,8 @@ function checkNuetralization() {
           
         }
       } else {
-        toastr.error("Oops! Please read the hint and try again.");
+        var errorText = "Oops! Please read the hint and try again."
+        toastr.error(errorText);
         toastr.info(
           "Hint: The Second Product covers over 71% of the earth.",
           "",
@@ -76,24 +79,26 @@ function checkNuetralization() {
             extendedTimeOut: 0,
           }
         );
-        hint();
+        hint(errorText);
       }
     } else {
-      toastr.error("Incorrect please try again.");
+      var errorText = "Incorrect please try again."
+      toastr.error(errorText);
       toastr.info("Hint: The first Product is used heavily in cooking.", "", {
         timeOut: 0,
         extendedTimeOut: 0,
       });
-      hint();
+      hint(errorText);
     }
   } catch (error) {
     console.log(error);
-    toastr.error("Incorrect please try again.");
+    var errorText = "Incorrect please try again."
+    toastr.error(errorText);
     toastr.info("Hint: The first Product is used heavily in cooking.", "", {
       timeOut: 0,
       extendedTimeOut: 0,
     });
-    hint();
+    hint(errorText);
   }
 }
 
@@ -176,13 +181,18 @@ function changePage() {
   location.href = "Home.html";
 }
 
-function hint() {
+function hint(errorText) {
+  var displayControl = document.getElementById("display-control");
+  displayControl.style.display = "block";
   var hint = document.getElementById("hint");
   var dialog = document.getElementById("dialog");
+  var textHint = document.getElementById("text-hint");
+  textHint.innerHTML = errorText;
   hint.style.display = "block";
   dialog.style.display = "block";
   setTimeout(() => {
+    displayControl.style.display = "none";
     hint.style.display = "none";
     dialog.style.display = "none";
-  }, 3000);
+  }, 5000);
 }

@@ -112,6 +112,7 @@ p {
 }
 
 .prompt{
+  display: none;
   width: 100%;
   position: absolute;
   z-index: 1;
@@ -138,6 +139,8 @@ p {
   position: absolute;
   padding-bottom: 320px;
   z-index: 2;
+  max-width: 200px;
+  text-justify: inter-word;
 }
 
 #dialog{

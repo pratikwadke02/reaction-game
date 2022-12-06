@@ -95,14 +95,54 @@ p {
   width:100%;
 }
 
-body {
-  overflow: hidden; /* Hide scrollbars */
-}
 
 .toast-top-center {
   top: 12px;
   left:50%;
   margin:0 0 0 -150px;
+}
+
+.reaction {
+  width: 100%;
+}
+.main-reaction{
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+
+.prompt{
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+}
+
+.main-prompt{
+  display: flex;
+  margin:auto;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#hint{
+}
+
+.hint-dialog{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#text-hint{
+  position: absolute;
+  padding-bottom: 320px;
+  z-index: 2;
+}
+
+#dialog{
+  position: relative;
+  padding-bottom: 320px;
 }
 
 .box {
@@ -112,8 +152,8 @@ body {
 }
 
 .centered {
-  position: absolute;
-  top: 50%;
+  /* position: absolute; */
+  /* top: 50%;
   left: 65%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
 }

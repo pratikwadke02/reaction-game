@@ -37,40 +37,44 @@
     </nav>
     <h1 class="heading m-3">Neutralisation Reaction</h1>
     <div class="container mw-100">
-      <img style="position:absolute;padding-left:50%;display:block;" id="hint" src='characterimages/4.png'/>
-      <div class="box">
-      <img style="padding-left:60%;display:block;
-      top: 10%;" id="dialog" src='characterimages/dialog.png'/>
-      <div class="centered" style="color: black; font-size: x-large;">Hint</div>
-      </div>
       <div class="reaction flex">
-        <div class="reactants">
-          <div class="sodiumHydroxide flex">
-            <p draggable="true" class="sodium">
-              <img src="/assets/Na - final.png" />
-            </p>
-            <p draggable="true" class="oxygen">
-              <img src="/assets/O - final.png" />
-            </p>
-            <p draggable="true" class="hydrogen">
-              <img src="/assets/H - final.png" />
-            </p>
+        <div class="prompt">
+          <div class="main-prompt">
+            <img id="hint" src='characterimages/4.png'/>
+            <div class="hint-dialog">
+              <div id="text-hint" style="color: black; font-size: x-large;">Hint</div>
+              <img id="dialog" src='characterimages/dialog.png'/>
+            </div>
+          </div>      
+        </div>
+        <div class="main-reaction">
+          <div class="reactants">
+            <div class="sodiumHydroxide flex">
+              <p draggable="true" class="sodium">
+                <img src="/assets/Na - final.png" />
+              </p>
+              <p draggable="true" class="oxygen">
+                <img src="/assets/O - final.png" />
+              </p>
+              <p draggable="true" class="hydrogen">
+                <img src="/assets/H - final.png" />
+              </p>
+            </div>
+            <div class="hydroChloricAcid flex">
+              <p draggable="true" class="hydrogen">
+                <img src="/assets/H - final.png" />
+              </p>
+              <p draggable="true" class="chlorine">
+                <img src="/assets/Cl - final.png" />
+              </p>
+            </div>
           </div>
-          <div class="hydroChloricAcid flex">
-            <p draggable="true" class="hydrogen">
-              <img src="/assets/H - final.png" />
-            </p>
-            <p draggable="true" class="chlorine">
-              <img src="/assets/Cl - final.png" />
-            </p>
+          <div class="product flex">
+            <div class="choice flex"></div>
+            <div class="choice flex"></div>
           </div>
         </div>
-
-        <div class="product flex">
-          <div class="choice flex"></div>
-          <div class="choice flex"></div>
         </div>
-      </div>
       <div class="tags flex">
         <div class="reactantTag">
           <h4 class="text-center pt-5">Reactants</h4>

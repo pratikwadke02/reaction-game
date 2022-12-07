@@ -64,41 +64,25 @@ function checkNuetralization() {
           reactant2[0].className == "hydrogen" &&
           reactant2[2].className == "hydrogen"
         ) {
-          toastr.remove();
           $("#myModal").modal("show");
           
         }
       } else {
-        var errorText = "Oops! Please read the hint and try again."
-        toastr.error(errorText);
-        toastr.info(
-          "Hint: The Second Product covers over 71% of the earth.",
-          "",
-          {
-            timeOut: 0,
-            extendedTimeOut: 0,
-          }
-        );
-        hint(errorText);
+        var errorText = "Oops! Please try again."
+        var hintText = "Hint: The Second Product covers over 71% of the earth."
+        errorMessage(errorText);
+
       }
     } else {
       var errorText = "Incorrect please try again."
-      toastr.error(errorText);
-      toastr.info("Hint: The first Product is used heavily in cooking.", "", {
-        timeOut: 0,
-        extendedTimeOut: 0,
-      });
-      hint(errorText);
+      var hintText = "Hint: The first Product is used heavily in cooking."
+      errorMessage(errorText);
     }
   } catch (error) {
     console.log(error);
     var errorText = "Incorrect please try again."
-    toastr.error(errorText);
-    toastr.info("Hint: The first Product is used heavily in cooking.", "", {
-      timeOut: 0,
-      extendedTimeOut: 0,
-    });
-    hint(errorText);
+    var hintText = "Hint: The first Product is used heavily in cooking."
+    errorMessage(errorText);
   }
 }
 
@@ -156,22 +140,6 @@ function checkDecomposition() {
   }
 }
 
-toastr.options = {
-  closeButton: true,
-  newestOnTop: false,
-  progressBar: true,
-  positionClass: "toast-top-right",
-  preventDuplicates: false,
-  onclick: null,
-  showDuration: "300",
-  hideDuration: "1000",
-  timeOut: "5000",
-  extendedTimeOut: "1000",
-  showEasing: "swing",
-  hideEasing: "linear",
-  showMethod: "fadeIn",
-  hideMethod: "fadeOut",
-};
 
 function reset() {
   location.reload();
@@ -181,14 +149,33 @@ function changePage() {
   location.href = "Home.html";
 }
 
-function hint(errorText) {
+function errorMessage(errorText) {
   var displayControl = document.getElementById("display-control");
   displayControl.style.display = "block";
   // var hint = document.getElementById("hint");
-  var hint = document.getElementById("hint-bulb");  //bulb hint
+  document.getElementById("hint-char").style.display = "none";
+  var hint = document.getElementById("error-char");  //bulb hint
   var dialog = document.getElementById("dialog");
   var textHint = document.getElementById("text-hint");
   textHint.innerHTML = errorText;
+  hint.style.display = "block";
+  dialog.style.display = "block";
+  setTimeout(() => {
+    displayControl.style.display = "none";
+    hint.style.display = "none";
+    dialog.style.display = "none";
+  }, 5000);
+}
+
+function hint(hintText) {
+  var displayControl = document.getElementById("display-control");
+  displayControl.style.display = "block";
+  // var hint = document.getElementById("hint");
+  document.getElementById("error-char").style.display = "none";
+  var hint = document.getElementById("hint-char");  //bulb hint
+  var dialog = document.getElementById("dialog");
+  var textHint = document.getElementById("text-hint");
+  textHint.innerHTML = hintText;
   hint.style.display = "block";
   dialog.style.display = "block";
   setTimeout(() => {

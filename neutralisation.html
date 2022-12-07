@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Neutralisation Reaction</title>
     <link rel="stylesheet" href="style.css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -23,11 +23,8 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+
   </head>
   <body>
     <nav class="navbar">
@@ -41,12 +38,15 @@
         <div class="prompt" id="display-control">
           <div class="main-prompt">
             <!-- <img id="hint" src='characterimages/4.png'/> -->
-            <img id="hint-bulb" src='characterimages/3.png'/>
+            <img id="error-char" src="characterimages/4.png" />
+            <img id="hint-char" src="characterimages/3.png" />
             <div class="hint-dialog">
-              <div id="text-hint" style="color: black; font-size: x-large;">Hint</div>
-              <img id="dialog" src='characterimages/dialog.png'/>
+              <div id="text-hint" style="color: black; font-size: x-large">
+                Hint
+              </div>
+              <img id="dialog" src="characterimages/dialog.png" />
             </div>
-          </div>      
+          </div>
         </div>
         <div class="main-reaction">
           <div class="reactants">
@@ -62,9 +62,7 @@
               </p>
             </div>
             <div class="hydroChloricAcid flex">
-              <h1 style="font-size:100px;">
-                +
-              </h1>
+              <h1 style="font-size: 100px">+</h1>
             </div>
             <div class="hydroChloricAcid flex">
               <p draggable="true" class="hydrogen">
@@ -75,26 +73,25 @@
               </p>
             </div>
           </div>
-          <div class="product flex">
-            <div class="choice flex"></div>
-            <div class="choice flex"></div>
+          <div>
+            <div class="product flex">
+              <div class="choice flex"></div>
+              <div class="choice flex"></div>
+            </div>
+            <div class="product flex">
+            <div class="reactantTag">
+              <h4 class="text-center pt-5">Reactants</h4>
+            </div>
+            <div class="productTag">
+              <h4 class="text-center pt-5">Products</h4>
+            </div>
+          </div>
           </div>
         </div>
-        </div>
-      <div class="tags flex">
-        <div class="reactantTag">
-          <h4 class="text-center pt-5">Reactants</h4>
-        </div>
-        <div class="productTag">
-          <h4 class="text-center pt-5">Products</h4>
-        </div>
       </div>
+
       <div class="flex submit">
-        <button
-          type="button"
-          class="btn btn-success m-5"
-          onclick="reset()"
-        >
+        <button type="button" class="btn btn-success m-5" onclick="reset()">
           Reset
         </button>
       </div>
@@ -116,25 +113,39 @@
           Hint
         </button>
       </div>
-      
     </div>
     <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-
-            <h4 class="modal-title">Congratulations!!! User you have successfully completed neutralisation reaction.</h4>
-            <button type="button" class="close" data-dismiss="modal" onclick="changePage()">
+            <h4 class="modal-title">
+              Congratulations!!! User you have successfully completed
+              neutralisation reaction.
+            </h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              onclick="changePage()"
+            >
               &times;
             </button>
           </div>
           <div class="modal-body">
             <p>NaOh + HCL --> NaCL + H2O</p>
-            <p>Na and CL are explosive and poisonous in nature but when they react together they form common salt which essential for cooking.</p>
+            <p>
+              Na and CL are explosive and poisonous in nature but when they
+              react together they form common salt which essential for cooking.
+            </p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="changePage()">
+            <button
+              type="button"
+              class="btn btn-default"
+              data-dismiss="modal"
+              onclick="changePage()"
+            >
               Close
             </button>
           </div>

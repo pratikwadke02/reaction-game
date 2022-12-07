@@ -184,7 +184,8 @@ function changePage() {
 function hint(errorText) {
   var displayControl = document.getElementById("display-control");
   displayControl.style.display = "block";
-  var hint = document.getElementById("hint");
+  // var hint = document.getElementById("hint");
+  var hint = document.getElementById("hint-bulb");  //bulb hint
   var dialog = document.getElementById("dialog");
   var textHint = document.getElementById("text-hint");
   textHint.innerHTML = errorText;

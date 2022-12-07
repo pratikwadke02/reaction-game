@@ -3,15 +3,43 @@
   padding: 0;
 }
 
+/*
+color scheme 
+#0b0c10
+#1f2833
+#c5c6c7
+#66fcf1
+#45a29e
+*/
+
+.navbar{
+  background-color: #1f2833;
+  color: #66fcf1 !important;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .heading {
   /* margin: auto; */
+  background-color: #0b0c10;
+  color: #fff;
   text-align: center;
+}
+
+h1{
+  margin: 0 !important;
 }
 .container {
   max-width: 100%;
   width: 100%;
   height: 85vh;
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
+  background-color: #c5c6c786;
   padding: 100px;
   margin: 0 auto;
 }

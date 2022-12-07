@@ -30,17 +30,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   </head>
   <body>
-    <nav class="navbar bg-dark">
+    <nav class="navbar">
       <div class="container-fluid">
-        <span class="navbar-brand mx-3 text-light"><h1>Reaction-Game</h1></span>
+        <span class="navbar-brand mx-3"><h1>Reaction-Game</h1></span>
       </div>
     </nav>
-    <h1 class="heading m-3">Neutralisation Reaction</h1>
+    <h1 class="heading p-3">Neutralisation Reaction</h1>
     <div class="container mw-100">
       <div class="reaction flex">
         <div class="prompt" id="display-control">
           <div class="main-prompt">
-            <img id="hint" src='characterimages/4.png'/>
+            <!-- <img id="hint" src='characterimages/4.png'/> -->
+            <img id="hint-bulb" src='characterimages/3.png'/>
             <div class="hint-dialog">
               <div id="text-hint" style="color: black; font-size: x-large;">Hint</div>
               <img id="dialog" src='characterimages/dialog.png'/>
@@ -59,6 +60,11 @@
               <p draggable="true" class="hydrogen">
                 <img src="/assets/H - final.png" />
               </p>
+            </div>
+            <div class="hydroChloricAcid flex">
+              <h1 style="font-size:100px;">
+                +
+              </h1>
             </div>
             <div class="hydroChloricAcid flex">
               <p draggable="true" class="hydrogen">

@@ -71,6 +71,7 @@ function checkNuetralization() {
         var errorText = "Oops! Please try again."
         var hintText = "Hint: The Second Product covers over 71% of the earth."
         errorMessage(errorText);
+        hint(hintText);
 
       }
     } else {

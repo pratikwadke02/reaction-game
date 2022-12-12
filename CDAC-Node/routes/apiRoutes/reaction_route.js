@@ -19,5 +19,8 @@ router.get("/reaction", reaction_controller.Get_Reaction_List);
 // Send Products and the verify
 // router.post('/verify-reaction')
 
+// Get reaction types
+// router.get("/types")
+
 module.exports = router;
 //

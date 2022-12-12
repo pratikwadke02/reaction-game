@@ -40,3 +40,18 @@ exports.Get_Reaction_List = async(req,res,next)=>{
     }
 }
 
+
+exports.Get_Reaction_List = async(req,res,next) =>{
+    try {
+        
+        const reactionlist = await reactionModel.find({},{'id':1,'name':1});
+
+        if(!reactionlist)
+            return res.json({error:"Something went wrong"});
+
+        return res.status(200).json({data:reactionlist});
+
+    } catch (error) {
+        console.log(error)
+    }
+}

@@ -1,0 +1,190 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/*
+color scheme 
+#0b0c10
+#1f2833
+#c5c6c7
+#66fcf1
+#45a29e
+*/
+
+.navbar{
+  background-color: #1f2833;
+  color: #66fcf1 !important;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heading {
+  /* margin: auto; */
+  background-color: #0b0c10;
+  color: #fff;
+  text-align: center;
+}
+
+h1{
+  margin: 0 !important;
+}
+.container {
+  max-width: 100%;
+  width: 100%;
+  height: 85vh;
+  /* background-color: #f2f2f2; */
+  background-color: #c5c6c786;
+  padding: 100px;
+  margin: 0 auto;
+}
+
+.reactants {
+  padding: 20px;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: row;
+}
+
+.product{
+  width:100%;
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+  align-items: center;
+}
+.reactants .sodiumHydroxide {
+  margin: 10px;
+}
+
+.reactants .hydroChloricAcid {
+  margin: 10px;
+}
+
+.reactants .calciumCarbonate {
+  margin: 10px;
+}
+
+.reactants .sodiumChloride {
+  margin: 10px;
+}
+
+
+
+
+.choice {
+  padding: 10px;
+  border: 1px solid #000;
+  background-color: rgb(245, 233, 220);
+  width: 400px;
+  height: 400px;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center; 
+}
+
+.flexCol{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content: space-around;
+}
+
+.text {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+p {
+  margin-bottom: 0px !important;
+}
+
+.submit{
+  float: right;
+}
+
+.reactantTag{
+  width:100%;
+}
+
+.productTag{
+  width:100%;
+}
+
+
+.toast-top-center {
+  top: 12px;
+  left:50%;
+  margin:0 0 0 -150px;
+}
+
+.reaction {
+  width: 100%;
+}
+.main-reaction{
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+
+.prompt{
+  display: none;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+}
+
+.main-prompt{
+  display: flex;
+  margin:auto;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#hint{
+}
+
+.hint-dialog{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#text-hint{
+  position: absolute;
+  padding-bottom: 320px;
+  z-index: 2;
+  max-width: 200px;
+  text-justify: inter-word;
+}
+
+#dialog{
+  position: relative;
+  padding-bottom: 320px;
+}
+
+.box {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.centered {
+  /* position: absolute; */
+  /* top: 50%;
+  left: 65%;
+  transform: translate(-50%, -50%); */
+}

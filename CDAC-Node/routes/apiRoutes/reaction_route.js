@@ -22,5 +22,8 @@ router.get("/reaction", reaction_controller.Get_Reaction_List);
 // Get reaction types
 // router.get("/types")
 
+router.get("/molecule", reaction_controller.get_molecule);
+router.post("/molecule", reaction_controller.post_molecule);
+
 module.exports = router;
 //

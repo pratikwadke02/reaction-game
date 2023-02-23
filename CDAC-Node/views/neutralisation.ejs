@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Neutralisation Reaction</title>
     <link rel="stylesheet" href="css/style.css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -41,12 +41,14 @@
         <div class="prompt" id="display-control">
           <div class="main-prompt">
             <!-- <img id="hint" src='characterimages/4.png'/> -->
-            <img id="hint-bulb" src='characterimages/3.png'/>
+            <img id="hint-bulb" src="characterimages/3.png" />
             <div class="hint-dialog">
-              <div id="text-hint" style="color: black; font-size: x-large;">Hint</div>
-              <img id="dialog" src='../../characterimages/dialog.png'/>
+              <div id="text-hint" style="color: black; font-size: x-large">
+                Hint
+              </div>
+              <img id="dialog" src="../../characterimages/dialog.png" />
             </div>
-          </div>      
+          </div>
         </div>
         <div class="main-reaction">
           <div class="reactants">
@@ -62,9 +64,7 @@
               </p>
             </div>
             <div class="hydroChloricAcid flex">
-              <h1 style="font-size:100px;">
-                +
-              </h1>
+              <h1 style="font-size: 100px">+</h1>
             </div>
             <div class="hydroChloricAcid flex">
               <p draggable="true" class="hydrogen">
@@ -80,7 +80,7 @@
             <div class="choice flex"></div>
           </div>
         </div>
-        </div>
+      </div>
       <div class="tags flex">
         <div class="reactantTag">
           <h4 class="text-center pt-5">Reactants</h4>
@@ -90,11 +90,7 @@
         </div>
       </div>
       <div class="flex submit">
-        <button
-          type="button"
-          class="btn btn-success m-5"
-          onclick="reset()"
-        >
+        <button type="button" class="btn btn-success m-5" onclick="reset()">
           Reset
         </button>
       </div>
@@ -116,25 +112,39 @@
           Hint
         </button>
       </div>
-      
     </div>
     <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-
-            <h4 class="modal-title">Congratulations!!! User you have successfully completed neutralisation reaction.</h4>
-            <button type="button" class="close" data-dismiss="modal" onclick="changePage()">
+            <h4 class="modal-title">
+              Congratulations!!! User you have successfully completed
+              neutralisation reaction.
+            </h4>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              onclick="changePage()"
+            >
               &times;
             </button>
           </div>
           <div class="modal-body">
             <p>NaOh + HCL --> NaCL + H2O</p>
-            <p>Na and CL are explosive and poisonous in nature but when they react together they form common salt which essential for cooking.</p>
+            <p>
+              Na and CL are explosive and poisonous in nature but when they
+              react together they form common salt which essential for cooking.
+            </p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="changePage()">
+            <button
+              type="button"
+              class="btn btn-default"
+              data-dismiss="modal"
+              onclick="changePage()"
+            >
               Close
             </button>
           </div>
@@ -143,190 +153,189 @@
     </div>
     <script>
       var p = document.getElementsByTagName("p");
-var choice = document.getElementsByClassName("choice");
+      var choice = document.getElementsByClassName("choice");
 
-var dragItem = null;
+      var dragItem = null;
 
-for (var i of p) {
-  i.addEventListener("dragstart", dragStart);
-  i.addEventListener("dragend", dragEnd);
-}
+      for (var i of p) {
+        i.addEventListener("dragstart", dragStart);
+        i.addEventListener("dragend", dragEnd);
+      }
 
-function dragStart() {
-  dragItem = this;
-  setTimeout(() => (this.style.display = "none"), 0);
-}
+      function dragStart() {
+        dragItem = this;
+        setTimeout(() => (this.style.display = "none"), 0);
+      }
 
-function dragEnd() {
-  setTimeout(() => (this.style.display = "block"), 0);
-  dragItem = null;
-}
+      function dragEnd() {
+        setTimeout(() => (this.style.display = "block"), 0);
+        dragItem = null;
+      }
 
-for (j of choice) {
-  j.addEventListener("dragover", dragOver);
-  j.addEventListener("dragenter", dragEnter);
-  j.addEventListener("dragleave", dragLeave);
-  j.addEventListener("drop", Drop);
-}
+      for (j of choice) {
+        j.addEventListener("dragover", dragOver);
+        j.addEventListener("dragenter", dragEnter);
+        j.addEventListener("dragleave", dragLeave);
+        j.addEventListener("drop", Drop);
+      }
 
-function Drop() {
-  this.append(dragItem);
-}
+      function Drop() {
+        this.append(dragItem);
+      }
 
-function dragOver(e) {
-  e.preventDefault();
-  this.style.border = "2px dotted red";
-}
+      function dragOver(e) {
+        e.preventDefault();
+        this.style.border = "2px dotted red";
+      }
 
-function dragEnter(e) {
-  e.preventDefault();
-}
+      function dragEnter(e) {
+        e.preventDefault();
+      }
 
-function dragLeave() {
-  this.style.border = "none";
-}
+      function dragLeave() {
+        this.style.border = "none";
+      }
 
-function checkNuetralization() {
-  let choice = document.getElementsByClassName("choice");
-  var reactant1 = choice[0].children;
-  var reactant2 = choice[1].children;
-  console.log(choice);
-  try {
-    if (
-      (reactant1[0].className == "sodium" &&
-        reactant1[1].className == "chlorine") ||
-      (reactant1[0].className == "chlorine" &&
-        reactant1[1].className == "sodium")
-    ) {
-      // console.log(true);
+      function checkNuetralization() {
+        let choice = document.getElementsByClassName("choice");
+        var reactant1 = choice[0].children;
+        var reactant2 = choice[1].children;
+        console.log(choice);
+        try {
+          if (
+            (reactant1[0].className == "sodium" &&
+              reactant1[1].className == "chlorine") ||
+            (reactant1[0].className == "chlorine" &&
+              reactant1[1].className == "sodium")
+          ) {
+            // console.log(true);
 
-      if (reactant2.length == 3) {
-        if (
-          reactant2[1].className == "oxygen" &&
-          reactant2[0].className == "hydrogen" &&
-          reactant2[2].className == "hydrogen"
-        ) {
-          $("#myModal").modal("show");
-          
+            if (reactant2.length == 3) {
+              if (
+                reactant2[1].className == "oxygen" &&
+                reactant2[0].className == "hydrogen" &&
+                reactant2[2].className == "hydrogen"
+              ) {
+                $("#myModal").modal("show");
+              }
+            } else {
+              var errorText = "Oops! Please try again.";
+              var hintText =
+                "Hint: The Second Product covers over 71% of the earth.";
+              errorMessage(errorText);
+              hint(hintText);
+            }
+          } else {
+            var errorText = "Incorrect please try again.";
+            var hintText =
+              "Hint: The first Product is used heavily in cooking.";
+            errorMessage(errorText);
+          }
+        } catch (error) {
+          console.log(error);
+          var errorText = "Incorrect please try again.";
+          var hintText = "Hint: The first Product is used heavily in cooking.";
+          errorMessage(errorText);
         }
-      } else {
-        var errorText = "Oops! Please try again."
-        var hintText = "Hint: The Second Product covers over 71% of the earth."
-        errorMessage(errorText);
-        hint(hintText);
-
       }
-    } else {
-      var errorText = "Incorrect please try again."
-      var hintText = "Hint: The first Product is used heavily in cooking."
-      errorMessage(errorText);
-    }
-  } catch (error) {
-    console.log(error);
-    var errorText = "Incorrect please try again."
-    var hintText = "Hint: The first Product is used heavily in cooking."
-    errorMessage(errorText);
-  }
-}
 
-function checkDisplacement() {
-  let choice = document.getElementsByClassName("choice");
-  var reactant1 = choice[0].children;
-  var reactant2 = choice[1].children;
-  console.log(choice);
-  try {
-    if (
-      reactant1[0].className == "potassium" &&
-      reactant1[1].className == "oxygen" &&
-      reactant1[2].className == "hydrogen"
-    ) {
-      if (
-        reactant2[0].className == "hydrogen" &&
-        reactant2[1].className == "hydrogen"
-      ) {
-        alert("Correct");
-      } else {
-        alert("Incorrect. Please try again.");
+      function checkDisplacement() {
+        let choice = document.getElementsByClassName("choice");
+        var reactant1 = choice[0].children;
+        var reactant2 = choice[1].children;
+        console.log(choice);
+        try {
+          if (
+            reactant1[0].className == "potassium" &&
+            reactant1[1].className == "oxygen" &&
+            reactant1[2].className == "hydrogen"
+          ) {
+            if (
+              reactant2[0].className == "hydrogen" &&
+              reactant2[1].className == "hydrogen"
+            ) {
+              alert("Correct");
+            } else {
+              alert("Incorrect. Please try again.");
+            }
+          } else {
+            alert("Incorrect please try again.");
+          }
+        } catch (error) {
+          alert("Incorrect please try again.");
+        }
       }
-    } else {
-      alert("Incorrect please try again.");
-    }
-  } catch (error) {
-    alert("Incorrect please try again.");
-  }
-}
 
-function checkDecomposition() {
-  let choice = document.getElementsByClassName("choice");
-  var reactant1 = choice[0].children;
-  var reactant2 = choice[1].children;
-  console.log(choice);
-  try {
-    if (
-      reactant1[0].className == "calcium" &&
-      reactant1[1].className == "oxygen"
-    ) {
-      if (
-        reactant2[1].className == "carbon" &&
-        reactant2[0].className == "oxygen" &&
-        reactant2[2].className == "oxygen"
-      ) {
-        alert("Correct");
-      } else {
-        alert("Incorrect. Please try again.");
+      function checkDecomposition() {
+        let choice = document.getElementsByClassName("choice");
+        var reactant1 = choice[0].children;
+        var reactant2 = choice[1].children;
+        console.log(choice);
+        try {
+          if (
+            reactant1[0].className == "calcium" &&
+            reactant1[1].className == "oxygen"
+          ) {
+            if (
+              reactant2[1].className == "carbon" &&
+              reactant2[0].className == "oxygen" &&
+              reactant2[2].className == "oxygen"
+            ) {
+              alert("Correct");
+            } else {
+              alert("Incorrect. Please try again.");
+            }
+          } else {
+            alert("Incorrect please try again.");
+          }
+        } catch (error) {
+          alert("Incorrect please try again.");
+        }
       }
-    } else {
-      alert("Incorrect please try again.");
-    }
-  } catch (error) {
-    alert("Incorrect please try again.");
-  }
-}
 
+      function reset() {
+        location.reload();
+      }
 
-function reset() {
-  location.reload();
-}
+      function changePage() {
+        location.href = "Home.html";
+      }
 
-function changePage() {
-  location.href = "Home.html";
-}
+      function errorMessage(errorText) {
+        var displayControl = document.getElementById("display-control");
+        displayControl.style.display = "block";
+        // var hint = document.getElementById("hint");
+        document.getElementById("hint-char").style.display = "none";
+        var hint = document.getElementById("error-char"); //bulb hint
+        var dialog = document.getElementById("dialog");
+        var textHint = document.getElementById("text-hint");
+        textHint.innerHTML = errorText;
+        hint.style.display = "block";
+        dialog.style.display = "block";
+        setTimeout(() => {
+          displayControl.style.display = "none";
+          hint.style.display = "none";
+          dialog.style.display = "none";
+        }, 5000);
+      }
 
-function errorMessage(errorText) {
-  var displayControl = document.getElementById("display-control");
-  displayControl.style.display = "block";
-  // var hint = document.getElementById("hint");
-  document.getElementById("hint-char").style.display = "none";
-  var hint = document.getElementById("error-char");  //bulb hint
-  var dialog = document.getElementById("dialog");
-  var textHint = document.getElementById("text-hint");
-  textHint.innerHTML = errorText;
-  hint.style.display = "block";
-  dialog.style.display = "block";
-  setTimeout(() => {
-    displayControl.style.display = "none";
-    hint.style.display = "none";
-    dialog.style.display = "none";
-  }, 5000);
-}
-
-function hint(hintText) {
-  var displayControl = document.getElementById("display-control");
-  displayControl.style.display = "block";
-  // var hint = document.getElementById("hint");
-  document.getElementById("error-char").style.display = "none";
-  var hint = document.getElementById("hint-char");  //bulb hint
-  var dialog = document.getElementById("dialog");
-  var textHint = document.getElementById("text-hint");
-  textHint.innerHTML = hintText;
-  hint.style.display = "block";
-  dialog.style.display = "block";
-  setTimeout(() => {
-    displayControl.style.display = "none";
-    hint.style.display = "none";
-    dialog.style.display = "none";
-  }, 5000);
-}
+      function hint(hintText) {
+        var displayControl = document.getElementById("display-control");
+        displayControl.style.display = "block";
+        // var hint = document.getElementById("hint");
+        document.getElementById("error-char").style.display = "none";
+        var hint = document.getElementById("hint-char"); //bulb hint
+        var dialog = document.getElementById("dialog");
+        var textHint = document.getElementById("text-hint");
+        textHint.innerHTML = hintText;
+        hint.style.display = "block";
+        dialog.style.display = "block";
+        setTimeout(() => {
+          displayControl.style.display = "none";
+          hint.style.display = "none";
+          dialog.style.display = "none";
+        }, 5000);
+      }
     </script>
   </body>
 </html>

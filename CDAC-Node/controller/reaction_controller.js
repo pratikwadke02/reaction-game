@@ -1,57 +1,84 @@
-const reactionModel = require('../models/reaction');
-
-
+const reactionModel = require("../models/reaction");
+const moleculemodel = require("../models/molecule");
 
 // Get reactanst by id
 
-exports.Get_Reactants = async(req,res,next) =>{
+exports.Get_Reactants = async (req, res, next) => {
+  const { id } = req.body;
 
-    const {id} = req.body;
+  try {
+    const reactants = await reactionModel.find(
+      { id: id },
+      { reactant: 1, hint1: 1, hint2: 1 }
+    );
 
-    try {
-        
-        const reactants = await reactionModel.find({'id':id},{"reactant":1,"hint1":1,"hint2":1})
+    if (!reactants) return res.json({ error: "Something went wrong" });
 
-        if(!reactants)
-            return res.json({error:"Something went wrong"});
+    return res.status(200).json({ data: reactants });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-        return res.status(200).json({data:reactants});
+exports.Get_Reaction_List = async (req, res, next) => {
+  try {
+    const reactionlist = await reactionModel.find({}, { id: 1, name: 1 });
 
-    } catch (error) {
-        console.log(error)
-    }
-}
+    if (!reactionlist) return res.json({ error: "Something went wrong" });
 
+    return res.status(200).json({ data: reactionlist });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-exports.Get_Reaction_List = async(req,res,next)=>{
+// exports.post_reaction = async (req, res, next) => {
+//   const { id, reactant, product } = req.body;
 
+//   try {
+//     reactionModel.updateOne(
+//       { id: id },
+//         { $push: { reactant: reactant, product: product } }
+//     );
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
-    try {
-        
-        const reactionlist = await reactionModel.find({},{'id':1,'name':1});
+exports.post_molecule = async (req, res, next) => {
+  const { name, content } = req.body;
 
-        if(!reactionlist)
-            return res.json({error:"Something went wrong"});
+  try {
+    //add molecule to database
+    const molecule = new moleculemodel({
+      name: name,
+      content: content,
+    });
+    await molecule.save();
+    return res.status(200).json({ data: "success" });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-        return res.status(200).json({data:reactionlist});
+exports.get_molecule = async (req, res, next) => {
+  const { name } = req.body;
 
-    } catch (error) {
-        console.log(error)
-    }
-}
+  try {
+    const molecule = await moleculemodel.find({});
+    return res.status(200).json({ data: molecule });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-
-exports.Get_Reaction_List = async(req,res,next) =>{
-    try {
-        
-        const reactionlist = await reactionModel.find({},{'id':1,'name':1});
-
-        if(!reactionlist)
-            return res.json({error:"Something went wrong"});
-
-        return res.status(200).json({data:reactionlist});
-
-    } catch (error) {
-        console.log(error)
-    }
-}
+// exports.get_hint() = async (req, res, next) => {
+//     const { id } = req.body;
+    
+//     try {
+//         const hint = await reactionModel.find({ id: id }, { hint1: 1, hint2: 1 });
+//         return res.status(200).json({ data: hint });
+//     } catch (error) {
+//         console.log(error);
+//     }
+//     };

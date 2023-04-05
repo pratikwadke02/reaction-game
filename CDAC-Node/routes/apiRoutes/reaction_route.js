@@ -9,13 +9,13 @@ const reaction_controller = require("../../controller/reaction_controller");
 // Get Reaction
 router.get(
   "/reactant",
-  [body("id").not().isEmpty().withMessage("id is required")],
+  // [body("id").not().isEmpty().withMessage("id is required")],
   reaction_controller.Get_Reactants
 );
 
 // Get Reaction-list
 router.get("/reaction",[
-  body('type').not().isEmpty().withMessage("type is required")
+  // body('type').not().isEmpty().withMessage("type is required")
 ] ,reaction_controller.Get_Reaction_List);
 
 // Send Products and the verify

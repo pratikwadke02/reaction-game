@@ -19,6 +19,7 @@ const Reaction_Model = new Schema({
   ],
   hint1: String,
   hint2: String,
+  count: Number,
 });
 
 module.exports = mongoose.model("Reaction", Reaction_Model);

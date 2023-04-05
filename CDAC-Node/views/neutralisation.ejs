@@ -153,6 +153,7 @@
     </div>
     <script>
       var products;
+      var totalcount;
       function getReaction() {
         let queryData = {
           id: "63f073e4f3b2ad32d25bb330",
@@ -166,6 +167,7 @@
           success: (result, status, xhr) => {
             console.log(result);
             products = result.data[0].product;
+            totalcount = result.data[0].count;
             let reactantData = result.data[0].reactant;
             let reactantOne = reactantData[0];
             let reactantTwo = reactantData[1];
@@ -262,7 +264,7 @@
               }
             }
           }
-          if (count == 5) {
+          if (count == totalcount) {
             $("#myModal").modal("show");
           } else {
             var errorText = "Oops! Please try again.";

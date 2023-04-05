@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Neutralisation Reaction</title>
+    <title>Displacement Reaction</title>
     <link rel="stylesheet" href="/css/style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link
@@ -35,7 +35,7 @@
         <span class="navbar-brand mx-3"><h1>Reaction-Game</h1></span>
       </div>
     </nav>
-    <h1 class="heading p-3">Neutralisation Reaction</h1>
+    <h1 class="heading p-3">Displacement Reaction</h1>
     <div class="container mw-100">
       <div class="reaction flex">
         <div class="prompt" id="display-control">
@@ -63,9 +63,6 @@
                 <img src="/assets/H - final.png" />
               </p> -->
             </div>
-            <div class="reactantTwo flex">
-              <h1 style="font-size: 100px">+</h1>
-            </div>
             <div class="reactantTwo flex" id="reactant-two">
               <!-- <p draggable="true" class="hydrogen">
                 <img src="/assets/H - final.png" />
@@ -74,8 +71,11 @@
                 <img src="/assets/Cl - final.png" />
               </p> -->
             </div>
+            <div class="reactantThree flex" id="reactant-three">
+
+            </div>
           </div>
-          <div class="product flex">
+          <div class="product flex" id="products-container">
             <div class="choice flex"></div>
             <div class="choice flex"></div>
           </div>
@@ -107,18 +107,9 @@
         <button
           type="button"
           class="btn btn-success m-5"
-          onclick="getHintById(1)"
+          onclick="hint('The first Product is used heavily in cooking.')"
         >
-          Hint 1
-        </button>
-      </div>
-      <div class="flex submit">
-        <button
-          type="button"
-          class="btn btn-success m-5"
-          onclick="getHintById(2)"
-        >
-          Hint 2
+          Hint
         </button>
       </div>
     </div>
@@ -161,11 +152,8 @@
       </div>
     </div>
     <script>
-      // console.log(window.location.href.slice(46))
-      let reactionId = window.location.href.slice(46);
+      let reactionId = window.location.href.slice(44);
       var products;
-      var totalcount;
-      var hintOpen = false; 
       function getReaction() {
         let queryData = {
           id: reactionId,
@@ -179,30 +167,61 @@
           success: (result, status, xhr) => {
             console.log(result);
             products = result.data[0].product;
-            totalcount = result.data[0].count;
             let reactantData = result.data[0].reactant;
-            let reactantOne = reactantData[0];
-            let reactantTwo = reactantData[1];
+            let reactantDataLength = reactantData.length;
+            console.log(reactantDataLength);
+            
+            
             let reactantOnehtml = "";
             let reactantTwohtml = "";
-            let reactantOneLength = reactantOne.content.length;
-            for (let i = 0; i < reactantOneLength; i++) {
-              reactantOnehtml += `
-                <p draggable="true" class="${reactantOne.content[i].atom}">
-                  <img src="http://localhost:5000/assets/${reactantOne.content[i].atom}.png" />
-                </p>
-                `;
-            }
-            $("#reactant-one").html(reactantOnehtml);
-            let reactantTwoLength = reactantTwo.content.length;
-            for (let i = 0; i < reactantTwoLength; i++) {
-              reactantTwohtml += `
+            let reactantThreehtml = "";
+            
+            
+            for (let j = 0; j < reactantDataLength; j++) {
+              if (j === 0) {
+                let reactantOne = reactantData[0];
+                let reactantOneLength = reactantOne.content.length;
+                for (let i = 0; i < reactantOneLength; i++) {
+                  reactantOnehtml += `
+                          <p draggable="true" class="${reactantOne.content[i].atom}">
+                            <img src="http://localhost:5000/assets/${reactantOne.content[i].atom}.png" />
+                          </p>
+                          `;
+                }
+                $("#reactant-one").html(reactantOnehtml);
+              } else if (j === 1) {
+                let reactantTwo = reactantData[1];
+                let reactantTwoLength = reactantTwo.content.length;
+                for (let i = 0; i < reactantTwoLength; i++) {
+                  reactantTwohtml += `
                 <p draggable="true" class="${reactantTwo.content[i].atom}">
                   <img src="http://localhost:5000/assets/${reactantTwo.content[i].atom}.png" />
                 </p>
                 `;
+                }
+                $("#reactant-two").html(reactantTwohtml);
+              } else {
+                let reactantThree = reactantData[2];
+                let reactantThreeLength = reactantThree.content.length;
+                for (let i = 0; i < reactantThreeLength; i++) {
+                  reactantThreehtml += `
+                <p draggable="true" class="${reactantThree.content[i].atom}">
+                  <img src="http://localhost:5000/assets/${reactantThree.content[i].atom}.png" />
+                </p>
+                `;
+                }
+                $("#reactant-three").html(reactantThreehtml);
+              }
             }
-            $("#reactant-two").html(reactantTwohtml);
+            let productData = result.data[0].product;
+            let productDataLength = productData.length;
+            let producthtml = "";
+            for(let i=0;i<productDataLength;i++){
+                producthtml += `
+                <div class="choice flex"></div>
+                `;
+            }
+            $("#products-container").html(producthtml);
           },
           error: (e) => {
             console.log(e);
@@ -276,7 +295,7 @@
               }
             }
           }
-          if (count == totalcount) {
+          if (count == 5) {
             $("#myModal").modal("show");
           } else {
             var errorText = "Oops! Please try again.";
@@ -407,55 +426,22 @@
       }
 
       function hint(hintText) {
-        // console.log("Reached here");
         var displayControl = document.getElementById("display-control");
         displayControl.style.display = "block";
         // var hint = document.getElementById("hint");
-        // document.getElementById("error-char").style.display = "none";
-        // var hint = document.getElementById("hint-char"); //bulb hint
+        document.getElementById("error-char").style.display = "none";
+        var hint = document.getElementById("hint-char"); //bulb hint
         var dialog = document.getElementById("dialog");
         var textHint = document.getElementById("text-hint");
         textHint.innerHTML = hintText;
-        // hint.style.display = "block";
+        hint.style.display = "block";
         dialog.style.display = "block";
         setTimeout(() => {
-          console.log("here");
           displayControl.style.display = "none";
-          // hint.style.display = "none";
+          hint.style.display = "none";
           dialog.style.display = "none";
-        }, 10000);
+        }, 5000);
       }
-
-      let getHintById = (hintNum) =>{
-        let queryData = {
-          id: "63f073e4f3b2ad32d25bb330",
-        };
-        $.ajax({
-          url: `/v1/hint`,
-          method: "get",
-          async: false,
-          data: queryData,
-          success: (result, status, xhr) => {
-            if(hintNum == 1){
-              // console.log(result.data[0].hint1);
-              hint(result.data[0].hint1);
-              hintOpen = true;
-            }
-            else{
-              
-              hint(result.data[0].hint2);
-            }
-          },
-          error: (e) => {
-            console.log(e);
-          },
-        });
-      }
-
-      // getHintById();
-
-
-
     </script>
   </body>
 </html>

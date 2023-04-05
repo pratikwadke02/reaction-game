@@ -43,6 +43,7 @@
     ></script>
     <script>
       $(document).ready(function () {
+        const baseUrl = 'http://localhost:5000'
         function getReactionList() {
           const queryData = {
             type: "Decomposition", //send topic name from here
@@ -64,7 +65,7 @@
                 <p class="lead">
                     ${'f'}
                 </p>
-                <a class="btn btn-lg btn-primary" href="${'f'}" role="button">Try it out »</a>
+                <a class="btn btn-lg btn-primary" onclick="window.location.href = '${baseUrl}/decomposition-reaction/${data._id}'" role="button">Try it out »</a>
                 </div>
                 `;
                 i++;

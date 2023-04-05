@@ -6,8 +6,20 @@ router.get('/home-page',(req,res)=>{
     res.render('Home');
 });
 
-router.get('/neutralisation-reaction',(req,res)=>{
+router.get('/neutralisation-reaction/:id',(req,res)=>{
     res.render('neutralisation');
+});
+
+router.get('/displacement-reaction/:id',(req,res)=>{
+    res.render('displacement');
+});
+
+router.get('/decomposition-reaction/:id',(req,res)=>{
+    res.render('decomposition');
+});
+
+router.get('/combustion-reaction/:id',(req,res)=>{
+    res.render('combustion');
 });
 
 router.get('/neutralisation-list', (req, res)=> {

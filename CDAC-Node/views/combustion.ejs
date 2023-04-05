@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Neutralisation Reaction</title>
+    <title>Combustion Reaction</title>
     <link rel="stylesheet" href="/css/style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link
@@ -35,7 +35,7 @@
         <span class="navbar-brand mx-3"><h1>Reaction-Game</h1></span>
       </div>
     </nav>
-    <h1 class="heading p-3">Neutralisation Reaction</h1>
+    <h1 class="heading p-3">Combustion Reaction</h1>
     <div class="container mw-100">
       <div class="reaction flex">
         <div class="prompt" id="display-control">
@@ -107,18 +107,9 @@
         <button
           type="button"
           class="btn btn-success m-5"
-          onclick="getHintById(1)"
+          onclick="hint('The first Product is used heavily in cooking.')"
         >
-          Hint 1
-        </button>
-      </div>
-      <div class="flex submit">
-        <button
-          type="button"
-          class="btn btn-success m-5"
-          onclick="getHintById(2)"
-        >
-          Hint 2
+          Hint
         </button>
       </div>
     </div>
@@ -161,11 +152,9 @@
       </div>
     </div>
     <script>
-      // console.log(window.location.href.slice(46))
-      let reactionId = window.location.href.slice(46);
+    //   console.log(window.location.href.slice(42))
+      let reactionId = window.location.href.slice(42);
       var products;
-      var totalcount;
-      var hintOpen = false; 
       function getReaction() {
         let queryData = {
           id: reactionId,
@@ -179,7 +168,6 @@
           success: (result, status, xhr) => {
             console.log(result);
             products = result.data[0].product;
-            totalcount = result.data[0].count;
             let reactantData = result.data[0].reactant;
             let reactantOne = reactantData[0];
             let reactantTwo = reactantData[1];
@@ -276,7 +264,7 @@
               }
             }
           }
-          if (count == totalcount) {
+          if (count == 5) {
             $("#myModal").modal("show");
           } else {
             var errorText = "Oops! Please try again.";
@@ -407,55 +395,22 @@
       }
 
       function hint(hintText) {
-        // console.log("Reached here");
         var displayControl = document.getElementById("display-control");
         displayControl.style.display = "block";
         // var hint = document.getElementById("hint");
-        // document.getElementById("error-char").style.display = "none";
-        // var hint = document.getElementById("hint-char"); //bulb hint
+        document.getElementById("error-char").style.display = "none";
+        var hint = document.getElementById("hint-char"); //bulb hint
         var dialog = document.getElementById("dialog");
         var textHint = document.getElementById("text-hint");
         textHint.innerHTML = hintText;
-        // hint.style.display = "block";
+        hint.style.display = "block";
         dialog.style.display = "block";
         setTimeout(() => {
-          console.log("here");
           displayControl.style.display = "none";
-          // hint.style.display = "none";
+          hint.style.display = "none";
           dialog.style.display = "none";
-        }, 10000);
+        }, 5000);
       }
-
-      let getHintById = (hintNum) =>{
-        let queryData = {
-          id: "63f073e4f3b2ad32d25bb330",
-        };
-        $.ajax({
-          url: `/v1/hint`,
-          method: "get",
-          async: false,
-          data: queryData,
-          success: (result, status, xhr) => {
-            if(hintNum == 1){
-              // console.log(result.data[0].hint1);
-              hint(result.data[0].hint1);
-              hintOpen = true;
-            }
-            else{
-              
-              hint(result.data[0].hint2);
-            }
-          },
-          error: (e) => {
-            console.log(e);
-          },
-        });
-      }
-
-      // getHintById();
-
-
-
     </script>
   </body>
 </html>

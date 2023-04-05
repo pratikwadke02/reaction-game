@@ -155,6 +155,7 @@
       // console.log(window.location.href.slice(46))
       let reactionId = window.location.href.slice(46);
       var products;
+      var totalcount;
       function getReaction() {
         let queryData = {
           id: reactionId,
@@ -168,6 +169,7 @@
           success: (result, status, xhr) => {
             console.log(result);
             products = result.data[0].product;
+            totalcount = result.data[0].count;
             let reactantData = result.data[0].reactant;
             let reactantOne = reactantData[0];
             let reactantTwo = reactantData[1];
@@ -264,7 +266,7 @@
               }
             }
           }
-          if (count == 5) {
+          if (count == totalcount) {
             $("#myModal").modal("show");
           } else {
             var errorText = "Oops! Please try again.";

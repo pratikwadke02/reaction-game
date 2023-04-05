@@ -27,5 +27,9 @@ router.get("/reaction",[
 router.get("/molecule", reaction_controller.get_molecule);
 router.post("/molecule", reaction_controller.post_molecule);
 
+
+router.get("/hint",reaction_controller.get_hint);
+
+
 module.exports = router;
 //

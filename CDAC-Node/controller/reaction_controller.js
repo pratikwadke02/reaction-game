@@ -4,7 +4,7 @@ const moleculemodel = require("../models/molecule");
 // Get reactanst by id
 
 exports.Get_Reactants = async (req, res, next) => {
-  const { id } = req.body;
+  const { id } = req.query;
 
   try {
     const reactants = await reactionModel.find(
@@ -22,7 +22,7 @@ exports.Get_Reactants = async (req, res, next) => {
 
 exports.Get_Reaction_List = async (req, res, next) => {
   try {
-    const reactionlist = await reactionModel.find({type:req.body.type}, { id: 1, name: 1 });
+    const reactionlist = await reactionModel.find({type:req.query.type}, { id: 1, name: 1 });
 
     if (!reactionlist) return res.json({ error: "Something went wrong" });
 

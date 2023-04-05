@@ -152,7 +152,6 @@
       </div>
     </div>
     <script>
-      $(document).ready(function () {
         function getReaction(){
           let queryData = {
             id: "63f073e4f3b2ad32d25bb330"
@@ -160,6 +159,7 @@
           $.ajax({
             url: `/v1/reaction-id`,
             method: "get",
+            async: false,
             data: queryData,
             success: (result, status, xhr) => {
               console.log(result)
@@ -193,16 +193,18 @@
           })
         }
         getReaction();
-      });
-      var p = document.getElementsByTagName("p");
+        var p = document.getElementsByTagName("p");
+        for (var i of p) {
+        i.addEventListener("dragstart", dragStart);
+        i.addEventListener("dragend", dragEnd);
+      }
+
+      
       var choice = document.getElementsByClassName("choice");
 
       var dragItem = null;
 
-      for (var i of p) {
-        i.addEventListener("dragstart", dragStart);
-        i.addEventListener("dragend", dragEnd);
-      }
+
 
       function dragStart() {
         dragItem = this;

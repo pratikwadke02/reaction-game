@@ -52,8 +52,8 @@
         </div>
         <div class="main-reaction">
           <div class="reactants">
-            <div class="sodiumHydroxide flex">
-              <p draggable="true" class="sodium">
+            <div class="reactantOne flex" id="reactant-one">
+              <!-- <p draggable="true" class="sodium">
                 <img src="../../assets/Na - final.png" />
               </p>
               <p draggable="true" class="oxygen">
@@ -61,18 +61,18 @@
               </p>
               <p draggable="true" class="hydrogen">
                 <img src="/assets/H - final.png" />
-              </p>
+              </p> -->
             </div>
-            <div class="hydroChloricAcid flex">
+            <div class="reactantTwo flex">
               <h1 style="font-size: 100px">+</h1>
             </div>
-            <div class="hydroChloricAcid flex">
-              <p draggable="true" class="hydrogen">
+            <div class="reactantTwo flex" id="reactant-two">
+              <!-- <p draggable="true" class="hydrogen">
                 <img src="/assets/H - final.png" />
               </p>
               <p draggable="true" class="chlorine">
                 <img src="/assets/Cl - final.png" />
-              </p>
+              </p> -->
             </div>
           </div>
           <div class="product flex">
@@ -152,6 +152,48 @@
       </div>
     </div>
     <script>
+      $(document).ready(function () {
+        function getReaction(){
+          let queryData = {
+            id: "63f073e4f3b2ad32d25bb330"
+          }
+          $.ajax({
+            url: `/v1/reaction-id`,
+            method: "get",
+            data: queryData,
+            success: (result, status, xhr) => {
+              console.log(result)
+              let reactantData = result.data[0].reactant;
+              let reactantOne = reactantData[0];
+              let reactantTwo = reactantData[1];
+              let reactantOnehtml = '';
+              let reactantTwohtml = '';
+              let reactantOneLength = reactantOne.content.length;
+              for (let i = 0; i < reactantOneLength; i++) {
+                reactantOnehtml += `
+                <p draggable="true" class="${reactantOne.content[i].atom}">
+                  <img src="http://localhost:5000/assets/${reactantOne.content[i].atom}.png" />
+                </p>
+                `;
+              }
+              $('#reactant-one').html(reactantOnehtml);
+              let reactantTwoLength = reactantTwo.content.length;
+              for (let i = 0; i < reactantTwoLength; i++) {
+                reactantTwohtml += `
+                <p draggable="true" class="${reactantTwo.content[i].atom}">
+                  <img src="http://localhost:5000/assets/${reactantTwo.content[i].atom}.png" />
+                </p>
+                `;
+              }
+              $('#reactant-two').html(reactantTwohtml);
+            },
+            error: (e) => {
+              console.log(e);
+            },
+          })
+        }
+        getReaction();
+      });
       var p = document.getElementsByTagName("p");
       var choice = document.getElementsByClassName("choice");
 
@@ -164,6 +206,7 @@
 
       function dragStart() {
         dragItem = this;
+        console.log(dragItem)
         setTimeout(() => (this.style.display = "none"), 0);
       }
 
@@ -187,6 +230,7 @@
         e.preventDefault();
         this.style.border = "2px dotted red";
       }
+
 
       function dragEnter(e) {
         e.preventDefault();

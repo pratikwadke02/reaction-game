@@ -14,7 +14,7 @@ router.get(
 );
 
 // Get Reaction-list
-router.get("/reaction",,[
+router.get("/reaction",[
   body('type').not().isEmpty().withMessage("type is required")
 ] ,reaction_controller.Get_Reaction_List);
 

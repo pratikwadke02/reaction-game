@@ -152,63 +152,63 @@
       </div>
     </div>
     <script>
-        function getReaction(){
-          let queryData = {
-            id: "63f073e4f3b2ad32d25bb330"
-          }
-          $.ajax({
-            url: `/v1/reaction-id`,
-            method: "get",
-            async: false,
-            data: queryData,
-            success: (result, status, xhr) => {
-              console.log(result)
-              let reactantData = result.data[0].reactant;
-              let reactantOne = reactantData[0];
-              let reactantTwo = reactantData[1];
-              let reactantOnehtml = '';
-              let reactantTwohtml = '';
-              let reactantOneLength = reactantOne.content.length;
-              for (let i = 0; i < reactantOneLength; i++) {
-                reactantOnehtml += `
+      var products;
+      function getReaction() {
+        let queryData = {
+          id: "63f073e4f3b2ad32d25bb330",
+        };
+
+        $.ajax({
+          url: `/v1/reaction-id`,
+          method: "get",
+          async: false,
+          data: queryData,
+          success: (result, status, xhr) => {
+            console.log(result);
+            products = result.data[0].product;
+            let reactantData = result.data[0].reactant;
+            let reactantOne = reactantData[0];
+            let reactantTwo = reactantData[1];
+            let reactantOnehtml = "";
+            let reactantTwohtml = "";
+            let reactantOneLength = reactantOne.content.length;
+            for (let i = 0; i < reactantOneLength; i++) {
+              reactantOnehtml += `
                 <p draggable="true" class="${reactantOne.content[i].atom}">
                   <img src="http://localhost:5000/assets/${reactantOne.content[i].atom}.png" />
                 </p>
                 `;
-              }
-              $('#reactant-one').html(reactantOnehtml);
-              let reactantTwoLength = reactantTwo.content.length;
-              for (let i = 0; i < reactantTwoLength; i++) {
-                reactantTwohtml += `
+            }
+            $("#reactant-one").html(reactantOnehtml);
+            let reactantTwoLength = reactantTwo.content.length;
+            for (let i = 0; i < reactantTwoLength; i++) {
+              reactantTwohtml += `
                 <p draggable="true" class="${reactantTwo.content[i].atom}">
                   <img src="http://localhost:5000/assets/${reactantTwo.content[i].atom}.png" />
                 </p>
                 `;
-              }
-              $('#reactant-two').html(reactantTwohtml);
-            },
-            error: (e) => {
-              console.log(e);
-            },
-          })
-        }
-        getReaction();
-        var p = document.getElementsByTagName("p");
-        for (var i of p) {
+            }
+            $("#reactant-two").html(reactantTwohtml);
+          },
+          error: (e) => {
+            console.log(e);
+          },
+        });
+      }
+      getReaction();
+      var p = document.getElementsByTagName("p");
+      for (var i of p) {
         i.addEventListener("dragstart", dragStart);
         i.addEventListener("dragend", dragEnd);
       }
 
-      
       var choice = document.getElementsByClassName("choice");
 
       var dragItem = null;
 
-
-
       function dragStart() {
         dragItem = this;
-        console.log(dragItem)
+        console.log(dragItem);
         setTimeout(() => (this.style.display = "none"), 0);
       }
 
@@ -233,7 +233,6 @@
         this.style.border = "2px dotted red";
       }
 
-
       function dragEnter(e) {
         e.preventDefault();
       }
@@ -243,46 +242,74 @@
       }
 
       function checkNuetralization() {
+        console.log(products);
         let choice = document.getElementsByClassName("choice");
+        let choices = [];
+        for (let i = 0; i < choice.length; i++) {
+          choices.push(choice[i].children);
+        }
         var reactant1 = choice[0].children;
         var reactant2 = choice[1].children;
         console.log(choice);
+        let count = 0;
         try {
-          if (
-            (reactant1[0].className == "sodium" &&
-              reactant1[1].className == "chlorine") ||
-            (reactant1[0].className == "chlorine" &&
-              reactant1[1].className == "sodium")
-          ) {
-            // console.log(true);
-
-            if (reactant2.length == 3) {
-              if (
-                reactant2[1].className == "oxygen" &&
-                reactant2[0].className == "hydrogen" &&
-                reactant2[2].className == "hydrogen"
-              ) {
-                $("#myModal").modal("show");
+          for (let i = 0; i < products.length; i++) {
+            var product = products[i].content;
+            for (let j = 0; j < product.length; j++) {
+              var atom = product[j];
+              if (choices[i][j].className == atom.atom) {
+                count++;
               }
-            } else {
-              var errorText = "Oops! Please try again.";
-              var hintText =
-                "Hint: The Second Product covers over 71% of the earth.";
-              errorMessage(errorText);
-              hint(hintText);
             }
+          }
+          if (count == 5) {
+            $("#myModal").modal("show");
           } else {
-            var errorText = "Incorrect please try again.";
+            var errorText = "Oops! Please try again.";
             var hintText =
-              "Hint: The first Product is used heavily in cooking.";
-            errorMessage(errorText);
+              "The first Product is used heavily in cooking. The second product is used in the production of soap.";
+            $("#error").html(errorText);
+            $("#hint").html(hintText);
           }
         } catch (error) {
           console.log(error);
-          var errorText = "Incorrect please try again.";
-          var hintText = "Hint: The first Product is used heavily in cooking.";
-          errorMessage(errorText);
         }
+        // try {
+        //   if (
+        //     (reactant1[0].className == "sodium" &&
+        //       reactant1[1].className == "chlorine") ||
+        //     (reactant1[0].className == "chlorine" &&
+        //       reactant1[1].className == "sodium")
+        //   ) {
+        //     // console.log(true);
+
+        //     if (reactant2.length == 3) {
+        //       if (
+        //         reactant2[1].className == "oxygen" &&
+        //         reactant2[0].className == "hydrogen" &&
+        //         reactant2[2].className == "hydrogen"
+        //       ) {
+        //         $("#myModal").modal("show");
+        //       }
+        //     } else {
+        //       var errorText = "Oops! Please try again.";
+        //       var hintText =
+        //         "Hint: The Second Product covers over 71% of the earth.";
+        //       errorMessage(errorText);
+        //       hint(hintText);
+        //     }
+        //   } else {
+        //     var errorText = "Incorrect please try again.";
+        //     var hintText =
+        //       "Hint: The first Product is used heavily in cooking.";
+        //     errorMessage(errorText);
+        //   }
+        // } catch (error) {
+        //   console.log(error);
+        //   var errorText = "Incorrect please try again.";
+        //   var hintText = "Hint: The first Product is used heavily in cooking.";
+        //   errorMessage(errorText);
+        // }
       }
 
       function checkDisplacement() {

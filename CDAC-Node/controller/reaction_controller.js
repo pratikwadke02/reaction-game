@@ -72,13 +72,13 @@ exports.get_molecule = async (req, res, next) => {
   }
 };
 
-// exports.get_hint() = async (req, res, next) => {
-//     const { id } = req.body;
+exports.get_hint = async (req, res, next) => {
+    const { id } = req.body;
     
-//     try {
-//         const hint = await reactionModel.find({ id: id }, { hint1: 1, hint2: 1 });
-//         return res.status(200).json({ data: hint });
-//     } catch (error) {
-//         console.log(error);
-//     }
-//     };
+    try {
+        const hint = await reactionModel.find({ id: id }, { hint1: 1, hint2: 1 });
+        return res.status(200).json({ data: hint });
+    } catch (error) {
+        console.log(error);
+    }
+    };

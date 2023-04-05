@@ -8,13 +8,13 @@ const Reaction_Model = new Schema({
   reactant: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Molecules",
+      ref: "Molecule",
     },
   ],
   product: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Molecules",
+      ref: "Molecule",
     },
   ],
   hint1: String,

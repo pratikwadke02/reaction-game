@@ -63,9 +63,9 @@
                 <img src="/assets/H - final.png" />
               </p> -->
             </div>
-            <div class="reactantTwo flex">
+            <!-- <div class="reactantTwo flex">
               <h1 style="font-size: 100px">+</h1>
-            </div>
+            </div> -->
             <div class="reactantTwo flex" id="reactant-two">
               <!-- <p draggable="true" class="hydrogen">
                 <img src="/assets/H - final.png" />
@@ -75,7 +75,7 @@
               </p> -->
             </div>
           </div>
-          <div class="product flex">
+          <div class="product flex" id="products-container">
             <div class="choice flex"></div>
             <div class="choice flex"></div>
           </div>
@@ -170,29 +170,58 @@
             let reactantData = result.data[0].reactant;
             let reactantDataLength = reactantData.length;
             console.log(reactantDataLength);
-            let reactantOne = reactantData[0];
-            let reactantTwo = reactantData[1];
+            
+            
             let reactantOnehtml = "";
             let reactantTwohtml = "";
-            let reactantOneLength = reactantOne.content.length;
-            for (let i = 0; i < reactantOneLength; i++) {
-              reactantOnehtml += `
-                <p draggable="true" class="${reactantOne.content[i].atom}">
-                  <img src="http://localhost:5000/assets/${reactantOne.content[i].atom}.png" />
-                </p>
-                `;
-            }
-            $("#reactant-one").html(reactantOnehtml);
-            let reactantTwoLength = reactantTwo.content.length;
-            for (let i = 0; i < reactantTwoLength; i++) {
-              reactantTwohtml += `
+            let reactantThreehtml = "";
+            
+            
+            for (let j = 0; j < reactantDataLength; j++) {
+              if (j === 0) {
+                let reactantOne = reactantData[0];
+                let reactantOneLength = reactantOne.content.length;
+                for (let i = 0; i < reactantOneLength; i++) {
+                  reactantOnehtml += `
+                          <p draggable="true" class="${reactantOne.content[i].atom}">
+                            <img src="http://localhost:5000/assets/${reactantOne.content[i].atom}.png" />
+                          </p>
+                          `;
+                }
+                $("#reactant-one").html(reactantOnehtml);
+              } else if (j === 1) {
+                let reactantTwo = reactantData[1];
+                let reactantTwoLength = reactantTwo.content.length;
+                for (let i = 0; i < reactantTwoLength; i++) {
+                  reactantTwohtml += `
                 <p draggable="true" class="${reactantTwo.content[i].atom}">
                   <img src="http://localhost:5000/assets/${reactantTwo.content[i].atom}.png" />
                 </p>
                 `;
+                }
+                $("#reactant-two").html(reactantTwohtml);
+              } else {
+                let reactantThree = reactantData[2];
+                let reactantThreeLength = reactantThree.content.length;
+                for (let i = 0; i < reactantThreeLength; i++) {
+                  reactantThreehtml += `
+                <p draggable="true" class="${reactantThree.content[i].atom}">
+                  <img src="http://localhost:5000/assets/${reactantThree.content[i].atom}.png" />
+                </p>
+                `;
+                }
+                $("#reactant-three").html(reactantThreehtml);
+              }
             }
-            $("#reactant-two").html(reactantTwohtml);
             let productData = result.data[0].product;
+            let productDataLength = productData.length;
+            let producthtml = "";
+            for(let i=0;i<productDataLength;i++){
+                producthtml += `
+                <div class="choice flex"></div>
+                `;
+            }
+            $("#products-container").html(producthtml);
 
           },
           error: (e) => {

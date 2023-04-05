@@ -6,7 +6,7 @@ router.get('/home-page',(req,res)=>{
     res.render('Home');
 });
 
-router.get('/neutralisation-reaction',(req,res)=>{
+router.get('/neutralisation-reaction/:id',(req,res)=>{
     res.render('neutralisation');
 });
 

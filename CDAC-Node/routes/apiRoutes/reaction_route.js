@@ -30,6 +30,8 @@ router.post("/molecule", reaction_controller.post_molecule);
 
 router.get("/hint",reaction_controller.get_hint);
 
+router.get("/reaction-id",reaction_controller.Get_Reaction_Details);
+
 
 module.exports = router;
 //

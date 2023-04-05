@@ -107,7 +107,16 @@
         <button
           type="button"
           class="btn btn-success m-5"
-          onclick="hint('The first Product is used heavily in cooking.')"
+          onclick="getHintById(1)"
+        >
+          Hint
+        </button>
+      </div>
+      <div class="flex submit">
+        <button
+          type="button"
+          class="btn btn-success m-5"
+          onclick="getHintById(2)"
         >
           Hint
         </button>
@@ -152,8 +161,9 @@
       </div>
     </div>
     <script>
-      let reactionId = window.location.href.slice(44);
+      var reactionId = window.location.href.slice(44);
       var products;
+      var hintOpen = false;
       function getReaction() {
         let queryData = {
           id: reactionId,
@@ -426,22 +436,51 @@
       }
 
       function hint(hintText) {
+        // console.log("Reached here");
         var displayControl = document.getElementById("display-control");
         displayControl.style.display = "block";
         // var hint = document.getElementById("hint");
-        document.getElementById("error-char").style.display = "none";
-        var hint = document.getElementById("hint-char"); //bulb hint
+        // document.getElementById("error-char").style.display = "none";
+        // var hint = document.getElementById("hint-char"); //bulb hint
         var dialog = document.getElementById("dialog");
         var textHint = document.getElementById("text-hint");
         textHint.innerHTML = hintText;
-        hint.style.display = "block";
+        // hint.style.display = "block";
         dialog.style.display = "block";
         setTimeout(() => {
+          console.log("here");
           displayControl.style.display = "none";
-          hint.style.display = "none";
+          // hint.style.display = "none";
           dialog.style.display = "none";
-        }, 5000);
+        }, 10000);
       }
+
+      let getHintById = (hintNum) =>{
+        let queryData = {
+          id: reactionId,
+        };
+        $.ajax({
+          url: `/v1/hint`,
+          method: "get",
+          async: false,
+          data: queryData,
+          success: (result, status, xhr) => {
+            if(hintNum == 1){
+              // console.log(result.data[0].hint1);
+              hint(result.data[0].hint1);
+              hintOpen = true;
+            }
+            else{
+              
+              hint(result.data[0].hint2);
+            }
+          },
+          error: (e) => {
+            console.log(e);
+          },
+        });
+      }
+
     </script>
   </body>
 </html>

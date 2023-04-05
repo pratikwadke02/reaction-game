@@ -162,7 +162,7 @@
     </div>
     <script>
       // console.log(window.location.href.slice(46))
-      let reactionId = window.location.href.slice(46);
+      var reactionId = window.location.href.slice(46);
       var products;
       var totalcount;
       var hintOpen = false; 
@@ -428,7 +428,7 @@
 
       let getHintById = (hintNum) =>{
         let queryData = {
-          id: "63f073e4f3b2ad32d25bb330",
+          id: reactionId,
         };
         $.ajax({
           url: `/v1/hint`,

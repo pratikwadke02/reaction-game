@@ -152,7 +152,6 @@
       </div>
     </div>
     <script>
-      console.log(window.location.href.slice(45))
       let reactionId = window.location.href.slice(45);
       var products;
       function getReaction() {
@@ -169,6 +168,8 @@
             console.log(result);
             products = result.data[0].product;
             let reactantData = result.data[0].reactant;
+            let reactantDataLength = reactantData.length;
+            console.log(reactantDataLength);
             let reactantOne = reactantData[0];
             let reactantTwo = reactantData[1];
             let reactantOnehtml = "";
@@ -191,6 +192,8 @@
                 `;
             }
             $("#reactant-two").html(reactantTwohtml);
+            let productData = result.data[0].product;
+
           },
           error: (e) => {
             console.log(e);
@@ -210,7 +213,6 @@
 
       function dragStart() {
         dragItem = this;
-        console.log(dragItem);
         setTimeout(() => (this.style.display = "none"), 0);
       }
 

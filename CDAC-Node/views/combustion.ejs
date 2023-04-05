@@ -98,7 +98,7 @@
         <button
           type="button"
           class="btn btn-success m-5"
-          onclick="checkNuetralization()"
+          onclick="checkCombustion()"
         >
           Submit
         </button>
@@ -366,6 +366,10 @@
         } catch (error) {
           alert("Incorrect please try again.");
         }
+      }
+
+      function checkCombustion(){
+        console.log("combustion");
       }
 
       function reset() {

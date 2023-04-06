@@ -98,7 +98,7 @@
         <button
           type="button"
           class="btn btn-success m-5"
-          onclick="checkDisplacement()"
+          onclick="check()"
         >
           Submit
         </button>
@@ -163,7 +163,8 @@
     <script>
       var reactionId = window.location.href.slice(44);
       var products;
-      var hintOpen = false;
+      var totalcount;
+      var hintOpen = false; 
       function getReaction() {
         let queryData = {
           id: reactionId,
@@ -177,6 +178,7 @@
           success: (result, status, xhr) => {
             console.log(result);
             products = result.data[0].product;
+            totalcount = result.data[0].count;
             let reactantData = result.data[0].reactant;
             let reactantDataLength = reactantData.length;
             console.log(reactantDataLength);
@@ -284,7 +286,7 @@
         this.style.border = "none";
       }
 
-      function checkNuetralization() {
+      function check() {
         console.log(products);
         let choice = document.getElementsByClassName("choice");
         let choices = [];
@@ -305,7 +307,7 @@
               }
             }
           }
-          if (count == 5) {
+          if (count == totalcount) {
             $("#myModal").modal("show");
           } else {
             var errorText = "Oops! Please try again.";
@@ -480,6 +482,10 @@
           },
         });
       }
+
+      // getHintById();
+
+
 
     </script>
   </body>

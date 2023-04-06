@@ -35,7 +35,7 @@
         <span class="navbar-brand mx-3"><h1>Reaction-Game</h1></span>
       </div>
     </nav>
-    <h1 class="heading p-3">Neutralisation Reaction</h1>
+    <h1 class="heading p-3" id="header">Neutralisation Reaction</h1>
     <div class="container mw-100">
       <div class="reaction flex">
         <div class="prompt" id="display-control">
@@ -385,7 +385,7 @@
       }
 
       function changePage() {
-        location.href = "Home.html";
+        window.location = "http://localhost:5000/home-page";
       }
 
       function errorMessage(errorText) {

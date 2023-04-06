@@ -96,7 +96,7 @@
             <h4 class="text-center pt-5">Products</h4>
           </div>
           <div class="product flex displacement-products my-3" id="products-container">
-            <div class="choice flex"></div>
+            <div class="choice product-choice flex"></div>
             <div class="choice flex"></div>
           </div>
         </div>
@@ -210,7 +210,7 @@
             let producthtml = "";
             for(let i=0;i<productDataLength;i++){
                 producthtml += `
-                <div class="choice flex"></div>
+                <div class="choice displacement-choice flex"></div>
                 `;
             }
             $("#products-container").html(producthtml);
@@ -290,6 +290,8 @@
           if (count == totalcount) {
             $("#myModal").modal("show");
           } else {
+            console.log("error")
+            errorMessage("Oops! Please try again.");
             var errorText = "Oops! Please try again.";
             var hintText =
               "The first Product is used heavily in cooking. The second product is used in the production of soap.";
@@ -297,6 +299,7 @@
             $("#hint").html(hintText);
           }
         } catch (error) {
+          errorMessage("Oops! Please try again.");
           console.log(error);
         }
         // try {
@@ -396,24 +399,25 @@
       }
 
       function changePage() {
-        location.href = "Home.html";
+        window.location = 'http://localhost:5000/home-page'
       }
 
       function errorMessage(errorText) {
+        console.log(errorText);
         var displayControl = document.getElementById("display-control");
         displayControl.style.display = "block";
         // var hint = document.getElementById("hint");
-        document.getElementById("hint-char").style.display = "none";
+        // document.getElementById("hint-char").style.display = "none";
         var hint = document.getElementById("error-char"); //bulb hint
         var dialog = document.getElementById("dialog");
         var textHint = document.getElementById("text-hint");
-        textHint.innerHTML = errorText;
-        hint.style.display = "block";
-        dialog.style.display = "block";
+        textHint.innerText = errorText;
+        // hint.style.display = "block";
+        // dialog.style.display = "block";
         setTimeout(() => {
           displayControl.style.display = "none";
-          hint.style.display = "none";
-          dialog.style.display = "none";
+            // hint.style.display = "none";
+            // dialog.style.display = "none";
         }, 5000);
       }
 

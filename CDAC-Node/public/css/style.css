@@ -251,3 +251,11 @@ p {
   flex-direction: row;
   align-items: center;
 }
+
+.displacement-choice{
+  padding: 10px;
+  border: 1px solid #000;
+  background-color: rgb(245, 233, 220);
+  width: 600px;
+  height: 400px; 
+}

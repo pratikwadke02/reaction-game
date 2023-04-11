@@ -17,7 +17,7 @@
     <nav class="navbar bg-dark">
       <div class="container-fluid">
         <span class="navbar-brand mx-3 text-light">
-          <h1>Displacement Reactions</h1>
+          <h1 id="reaction-type-heading"></h1>
         </span>
       </div>
     </nav>
@@ -42,11 +42,16 @@
       crossorigin="anonymous"
     ></script>
     <script>
+      var reactionTypes = window.location.href.split("/")
+      var reactionTypeLength = reactionTypes.length;
+      var reactionType = reactionTypes[reactionTypeLength-1];
+      let headinghtml = `${reactionType} Reactions`;
+      $('#reaction-type-heading').html(headinghtml);
       $(document).ready(function () {
         const baseUrl = 'http://localhost:5000'
         function getReactionList() {
           const queryData = {
-            type: "Displacement", //send topic name from here
+            type: reactionType, //send topic name from here
           };
           $.ajax({
             url: `/v1/reaction`,
@@ -65,7 +70,7 @@
                 <p class="lead">
                     ${'f'}
                 </p>
-                <a class="btn btn-lg btn-primary" onclick="window.location.href = '${baseUrl}/displacement-reaction/${data._id}'" role="button">Try it out »</a>
+                <a class="btn btn-lg btn-primary" onclick="window.location.href = '${baseUrl}/reaction-page/${data._id}/${reactionType}'" role="button">Try it out »</a>
                 </div>
                 `;
                 i++;

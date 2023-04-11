@@ -10,7 +10,7 @@ router.get('/neutralisation-reaction/:id',(req,res)=>{
     res.render('neutralisation');
 });
 
-router.get('/displacement-reaction/:id',(req,res)=>{
+router.get('/reaction-page/:id/:type',(req,res)=>{
     res.render('displacement');
 });
 
@@ -30,7 +30,7 @@ router.get('/combustion-list', (req, res)=> {
     res.render('combustionList');
 });
 
-router.get('/displacement-list', (req, res)=> {
+router.get('/reaction-list/:type', (req, res)=> {
     res.render('displacementList');
 });
 

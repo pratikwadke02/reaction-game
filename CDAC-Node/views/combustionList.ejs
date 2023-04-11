@@ -17,7 +17,7 @@
     <nav class="navbar bg-dark">
       <div class="container-fluid">
         <span class="navbar-brand mx-3 text-light">
-          <h1>Combustion Reactions</h1>
+          <h1>Redox Reactions</h1>
         </span>
       </div>
     </nav>
@@ -46,7 +46,7 @@
         const baseUrl = "http://localhost:5000";
         function getReactionList() {
           const queryData = {
-            type: "Combustion", //send topic name from here
+            type: "Redox", //send topic name from here
           };
           $.ajax({
             url: `/v1/reaction`,

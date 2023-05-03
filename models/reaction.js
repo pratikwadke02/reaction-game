@@ -19,6 +19,7 @@ const Reaction_Model = new Schema({
   ],
   hint1: String,
   hint2: String,
+  hint3: String,
   count: Number,
 });
 

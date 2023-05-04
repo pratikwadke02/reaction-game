@@ -12,13 +12,27 @@
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
-
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+  
+  body {
+    font-family: "Poppins", sans-serif !important;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+  }
+  </style>
   <body class="bg-light">
     <nav class="navbar bg-dark">
-      <div class="container-fluid">
+      <div class="container-fluid" style="display:flex; flex-direction: row;">
         <span class="navbar-brand mx-3 text-light">
           <h1 id="reaction-type-heading"></h1>
         </span>
+        <a href="/" style="text-decoration: none;">
+          <span class="navbar-brand mx-3 text-light">
+            <h3>Home</h3>
+          </span>
+        </a>
       </div>
     </nav>
     <div class="container" id="reaction-list" style="display: grid; grid-template-columns: 600px 600px; grid-column-gap: 40px; grid-row-gap: 40px; justify-content: center; margin-top: 50px;">

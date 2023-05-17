@@ -6,7 +6,7 @@ const Molecule_Model = new Schema({
       content: [
           {
             atom: String,
-            postion: Number,
+            position: Number,
             name: String,
           },
         ],

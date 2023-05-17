@@ -35,7 +35,7 @@
         </a>
       </div>
     </nav>
-    <div class="container" id="reaction-list" style="display: grid; grid-template-columns: 600px 600px; grid-column-gap: 40px; grid-row-gap: 40px; justify-content: center; margin-top: 50px;">
+    <div class="container" id="reaction-list" style="display: flex; justify-content: center; margin-top: 50px; flex-direction: column;align-items: center; justify-content: space-around;">
       <div class="bg-white p-5 rounded shadow-lg w-100">
         <h1>Neutralisation Reaction</h1>
         <p class="lead">
@@ -79,9 +79,9 @@
               let i = 0;
               for (data of reactionList) {
                 reactionDetailshtml += `
-                <div class="bg-white p-5 rounded shadow-lg w-100">
+                <div class="bg-white p-5 rounded shadow-lg w-100 my-3" style="display:flex; flex-direction:row; align-items:center; justify-content:space-between;">
                     <h1>${data.name}</h1>
-                <a class="btn btn-lg btn-primary" onclick="window.location.href = '${baseUrl}/reaction-page/${data._id}/${reactionType}'" role="button">Try it out »</a>
+                <a class="btn btn-lg btn-primary" onclick="window.location.href = '${baseUrl}/reaction-page/${data._id}/${reactionType}'" role="button"><h4>Try it out »</h4></a>
                 </div>
                 `;
                 i++;

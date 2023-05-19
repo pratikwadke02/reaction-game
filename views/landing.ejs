@@ -47,6 +47,7 @@
       align-items: center;
     }
     .card-container{
+      position: relative;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -87,6 +88,16 @@
         background-color: #2c2e43;
         color: #fff;
     }
+    .flask{
+        position: absolute;
+        top: -100px;
+        right: -100px;
+    }
+    .atom{
+        position: absolute;
+        bottom: -100px;
+        left: -100px;
+    }
   </style>
   <body>
     <!-- particles.js container -->
@@ -94,6 +105,9 @@
     <div id="particles-js"></div>
     <div class="inner-container">
         <div class="card-container">
+          <div class="atom">
+            <img src="/images/atom.png" alt="" />
+          </div>
           <div class="header-comp">
               <h1 style="font-size: 80px;">Reaction-Game VLab</h1>
           </div>
@@ -103,6 +117,9 @@
                     <h1 style="font-size: 30px;">Get Started Now</h1>
                 </button>
             </a>
+          </div>
+          <div class="flask">
+            <img src="/images/flask.png" alt="" />
           </div>
         </div>
   </div>

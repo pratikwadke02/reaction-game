@@ -40,44 +40,41 @@
   }
   </style>
   <body>
-    <!-- <nav class="navbar">
-      <div class="container-fluid">
-        <span class="navbar-brand mx-3">
-          <h1>Reaction-Game</h1>
-        </span>
-      </div>
-    </nav> -->
     <div class="heading">
       <div class="header text-center" class="mx-3">
-        <h1>Reaction-Game</h1>
+        <a href="/" style="text-decoration: none">
+          <span class="navbar-brand mx-3 text-light">
+            <h1>Reaction-Game</h1>
+          </span>
+        </a>
       </div>
       <div class="header text-center" id="reaction-type-heading">
         <h1 class="p-3">Displacement Reaction</h1>
       </div>
       <div class="support-buttons">
         <button type="button" class="btn btn-danger mx-3" onclick="reset()">
-          Reset
+          <h4>Reset</h4>
         </button>
         <button type="button" class="btn btn-success mx-3" onclick="check()">
-          Submit
+          <h4>Submit</h4>
         </button>
         <button
           type="button"
           class="btn btn-warning mx-3"
           onclick="getHintById()"
         >
-          Hint
+        <h4>Hint</h4>
         </button>
         <button
           type="button"
           class="btn btn-light mx-3"
           onclick="getHintById()"
         >
-          Tutorial
+        <h4>Tutorial</h4>
         </button>
       </div>
     </div>
-    <div class="container mw-100">
+    <div class="mw-100">
       <div class="reaction flex">
         <div class="prompt" id="display-control">
           <div class="main-prompt">
@@ -92,7 +89,7 @@
         </div>
         <div class="main-reaction displacement">
           <div class="reactantTag">
-            <h4 class="text-center pt-5">Reactants</h4>
+            <h1 class="text-center pt-5">Reactants</h1>
           </div>
           <div class="reactants displacement-reactants">
             <div class="reactantOne flex" id="reactant-one"></div>
@@ -100,7 +97,7 @@
             <div class="reactantThree flex" id="reactant-three"></div>
           </div>
           <div class="productTag">
-            <h4 class="text-center pt-5">Products</h4>
+            <h1 class="text-center pt-5">Products</h1>
           </div>
           <div
             class="product flex displacement-products my-3"
@@ -162,7 +159,14 @@
       var products;
       var totalcount;
       var hintOpen = false;
-      let headinghtml = `<h1 class=" p-3">${reactionType} Reaction</h1>`;
+      let headinghtml = `
+      <a href="/reaction-list/${reactionType}" style="text-decoration: none">
+          <span class="text-light">
+            <h1 class="p-3">${reactionType} Reaction</h1>
+          </span>
+          </a>
+          `;
+
       $("#reaction-type-heading").html(headinghtml);
       function getReaction() {
         let queryData = {

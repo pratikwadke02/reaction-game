@@ -63,7 +63,7 @@ canvas
 
 .heading {
   /* margin: auto; */
-  background-color: #2c2e43;
+  background-color: #2c2e43 !important;
   color: #fff;
   text-align: center;
   display: flex;

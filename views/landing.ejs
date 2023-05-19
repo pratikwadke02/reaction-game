@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<h lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,7 +12,6 @@
       crossorigin="anonymous"
     />
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <style>
     @import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
@@ -25,8 +24,8 @@
     }
     .outer-container{
       position: relative;
-      height: 100%;
-      height: 90vh;
+      height: 100vh;
+      /* height: 84vh; */
     }
 
     #particles-js {
@@ -39,7 +38,7 @@
       z-index: -1;
     }
     .inner-container{
-      height: 100%;
+      height: 100vh;
       position: relative;
       z-index: 1;
       display: flex;
@@ -47,64 +46,67 @@
       justify-content: center;
       align-items: center;
     }
-    .home-card{
+    .card-container{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      max-width: 1200px;
+      width: 100%;
+      height: 70vh;
+      margin: auto;
       background-color: #2c2e43;
-      color: white;
       border-radius: 20px;
+      color: #fff;
+      padding: 20px;
+    }
+    .header-comp{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .get-started-btn{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .get-started{
+        background-color: #fff;
+        outline: 1px solid #fff;
+        outline-offset: 2px;
+        border-radius: 10px;
+        padding: 10px 20px;
+        font-size: 20px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+    .get-started:hover{
+        background-color: #2c2e43;
+        color: #fff;
     }
   </style>
   <body>
-    <div class="heading">
-      <div class="header text-center" class="mx-3">
-        <a href="/" style="text-decoration: none">
-          <span class="navbar-brand mx-3 text-light">
-            <h1>Reaction-Game</h1>
-          </span>
-        </a>
-      </div>
-      <div class="support-buttons">
-        <a href="/home" style="text-decoration: none">
-          <span class="navbar-brand mx-3 text-light">
-            <h3>Home</h3>
-          </span>
-        </a>
-      </div>
-    </div>
+    <!-- particles.js container -->
     <div class="outer-container">
-      <div id="particles-js"></div>
-      <div class="inner-container">
-        <div
-          class="container"
-          id="reaction-list"
-          style="
-            display: flex;
-            justify-content: center;
-            margin-top: 50px;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-          "
-        >
-          <div class="bg-white p-5 rounded shadow-lg w-100">
-            <h1>Neutralisation Reaction</h1>
-            <p class="lead">
-              Neutralisation is a reaction between an acid and an alkali that
-              forms a salt and water. Salts are odourless and have a salty
-              taste, and many are soluble in water. Common examples include
-              sodium chloride, potassium iodide, calcium carbonate and copper
-              sulfate
-            </p>
-
-            <a
-              class="btn btn-lg btn-primary"
-              href="neutralisation"
-              role="button"
-              >Try it out »
+    <div id="particles-js"></div>
+    <div class="inner-container">
+        <div class="card-container">
+          <div class="header-comp">
+              <h1 style="font-size: 80px;">Reaction-Game VLab</h1>
+          </div>
+          <div class="get-started-btn">
+            <a href="/home">
+                <button class="get-started">
+                    <h1 style="font-size: 30px;">Get Started Now</h1>
+                </button>
             </a>
           </div>
         </div>
-      </div>
-    </div>
+  </div>
+  </div>
     <script>
       particlesJS("particles-js", {
         particles: {
@@ -194,46 +196,5 @@
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
       crossorigin="anonymous"
     ></script>
-    <script>
-      var reactionTypes = window.location.href.split("/");
-      var reactionTypeLength = reactionTypes.length;
-      var reactionType = reactionTypes[reactionTypeLength - 1];
-      let headinghtml = `${reactionType} Reactions`;
-      $("#reaction-type-heading").html(headinghtml);
-      $(document).ready(function () {
-        const baseUrl = "http://localhost:5000";
-        function getReactionList() {
-          const queryData = {
-            type: reactionType, //send topic name from here
-          };
-          $.ajax({
-            url: `/v1/reaction`,
-            method: "get",
-            data: queryData,
-            success: (result, status, xhr) => {
-              console.log(result.data);
-              let reactionDetailshtml = "";
-              let reactionList = result.data;
-              let dataLength = reactionList.length;
-              let i = 0;
-              for (data of reactionList) {
-                reactionDetailshtml += `
-                <div class="home-card p-5 shadow-lg w-100 my-3" style="display:flex; flex-direction:row; align-items:center; justify-content:space-between;">
-                    <h1>${data.name}</h1>
-                <a class="btn btn-lg btn-light" onclick="window.location.href = '${baseUrl}/reaction-page/${data._id}/${reactionType}'" role="button"><h4>Try it out »</h4></a>
-                </div>
-                `;
-                i++;
-              }
-              $("#reaction-list").html(reactionDetailshtml);
-            },
-            error: (e) => {
-              console.log(e);
-            },
-          });
-        }
-        getReactionList();
-      });
-    </script>
   </body>
 </html>

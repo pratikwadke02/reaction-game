@@ -155,11 +155,31 @@ p {
 }
 
 .reactantTag{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   width:100%;
 }
 
+.reactantTag .tag{
+  width: fit-content;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
 .productTag{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   width:100%;
+}
+
+.productTag .tag{
+  width: fit-content;
+  background-color: #fff;
+  border-radius: 5px;
 }
 
 
